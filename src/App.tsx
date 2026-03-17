@@ -358,7 +358,7 @@ function Epilogue({ key }: { key?: string }) {
       </h2>
 
       <div className="mb-6 flex flex-col items-center">
-        <audio ref={audioRef} src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" loop />
+        <audio ref={audioRef} src="src/audio-vocals.mp3" loop />
         <button 
           onClick={toggleAudio}
           className="hand-drawn-border flex items-center gap-2 px-4 py-2 bg-white hover:bg-pink-50 text-pink-600 transition-all shadow-sm"
