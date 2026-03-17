@@ -14,9 +14,9 @@ const chapters = [
     ],
     successMessage: "Bener banget. Ngobrol sama kamu hari itu ngasih aku rasa nyaman yang belum pernah aku rasain sebelumnya.",
     photoUrls: [
-      "https://picsum.photos/seed/gramedia1/400/500",
-      "https://picsum.photos/seed/gramedia2/400/500",
-      "https://picsum.photos/seed/gramedia3/400/500"
+      "https://i.imgur.com/8NZYSBO.jpeg",
+      "https://i.imgur.com/iolftAh.jpeg",
+      "https://i.imgur.com/69woQnA.jpeg"
     ]
   },
   {
@@ -29,9 +29,9 @@ const chapters = [
     ],
     successMessage: "Hahaha, iya deh aku ngaku. Makasih ya udah selalu sabar ngadepin aku dan segala kelakuan absurdku selama ini.",
     photoUrls: [
-      "https://picsum.photos/seed/laugh1/400/500",
-      "https://picsum.photos/seed/laugh2/400/500",
-      "https://picsum.photos/seed/laugh3/400/500"
+      "https://i.imgur.com/tdmKxE4.jpeg",
+      "https://i.imgur.com/QhUJETl.jpeg",
+      "https://i.imgur.com/HNP7JcO.jpeg"
     ]
   },
   {
@@ -44,9 +44,9 @@ const chapters = [
     ],
     successMessage: "Tepat sekali. Walaupun aku tahu kamu juga butuh dimanja, tapi melihat kamu nyaman bersandar dan manja ke aku... itu rasanya luar biasa.",
     photoUrls: [
-      "https://picsum.photos/seed/hug1/400/500",
-      "https://picsum.photos/seed/hug2/400/500",
-      "https://picsum.photos/seed/hug3/400/500"
+      "https://i.imgur.com/GW3Feef.jpeg",
+      "https://i.imgur.com/stRgbmd.jpeg",
+      "https://i.imgur.com/8tt6A2f.jpeg"
     ]
   }
 ];
@@ -295,7 +295,7 @@ function Epilogue({ key }: { key?: string }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  const p1Text = "Selamat bertambah usia, Sayang. Di hari yang spesial ini, aku cuma mau ngucapin terima kasih karena kamu udah jadi versi terbaik dari dirimu sendiri. Semoga di lembaran umur yang baru ini, kamu selalu dikelilingi kebahagiaan, apa yang kamu semogakan bisa tercapai, dan makin sabar ngadepin aku yang kadang suka bertingkah. Kalau sehari-hari aku sibuk ngurusin klien yang mau foto-foto di Popbox Studio, hari ini, mesin waktu dan semua jepretan memori ini eksklusif 100% VIP cuma buat kamu.";
+  const p1Text = "Selamat bertambah usia, Sayang. Di hari yang spesial ini, aku cuma mau ngucapin terima kasih karena kamu udah jadi versi terbaik dari dirimu sendiri. Semoga di lembaran umur yang baru ini, kamu selalu dikelilingi kebahagiaan, apa yang kamu semogakan bisa tercapai, dan makin sabar ngadepin aku yang kadang suka bertingkah. Kalau sehari-hari aku sibuk ngurusin kerjaan yang ga ada abisnya, hari ini, mesin waktu dan semua jepretan memori ini eksklusif 100% VIP cuma buat kamu.";
   const p2Text = "Sekalian merayakan perjalanan panjang kita... Happy 3rd Anniversary juga untuk kita! Terima kasih sudah menjadikan aku sebagai tempat istirahatmu yang nyaman, dan memilih untuk terus berjalan bersamaku.";
 
   useEffect(() => {
