@@ -1143,6 +1143,9 @@
       const enteredPin = Array.from(pinInputs).map(i => i.value).join('');
       if (enteredPin === correctPin) {
         unlockJournal();
+        backsong.play().catch(e => console.log("Gunakan tombol musik jika tertahan."));
+        isPlaying = true;
+        document.getElementById('musicToggle').innerHTML = '🎵';
       } else {
         failCount++;
         const pinContainer = document.getElementById('pin-inputs');
