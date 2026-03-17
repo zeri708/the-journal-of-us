@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Special+Elite&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Playfair Display", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-handwriting: "Caveat", cursive;
+  --font-typewriter: "Special Elite", monospace;
+}
+
+body {
+  background-color: #e5e5f7;
+  background-image: radial-gradient(#d1d5db 1px, transparent 1px);
+  background-size: 20px 20px;
+  color: #374151;
+  overflow-x: hidden;
+}
+
+.paper-bg {
+  background-color: #fdfbf7;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  box-shadow: 
+    -2px 0 5px rgba(0,0,0,0.05),
+    0 4px 20px rgba(0,0,0,0.15),
+    inset 4px 0 10px rgba(0,0,0,0.02);
+}
+
+.washi-tape {
+  background-color: rgba(255, 182, 193, 0.7);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  backdrop-filter: blur(2px);
+  transform: rotate(-2deg);
+}
+
+.washi-tape-2 {
+  background-color: rgba(173, 216, 230, 0.7);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  backdrop-filter: blur(2px);
+  transform: rotate(3deg);
+}
+
+.hand-drawn-border {
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  border: 2px solid #4b5563;
+}
+
+.polaroid {
+  background: white;
+  padding: 12px 12px 40px 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
