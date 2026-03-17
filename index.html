@@ -359,53 +359,53 @@
     window.isPlayingAudio = false;
     
     // Data
-    const chapters = [
-      {
-        title: "Masa Putih Abu-abu (2023)",
-        narasi: "Masih ingat hari itu? Kita masih pakai seragam SMA kelas 12, niat awalnya ke Gramedia mau cari buku belajar buat SBMPTN. Tapi, ada satu hal yang paling aku ingat dari momen itu...",
-        question: "Menurut kamu, apa yang bikin aku saat itu mikir, 'Wah, dia nih orangnya'?",
-        choices: [
-          { text: "Pas lihat kamu bingung milih buku tebal.", isCorrect: false, wrongMessage: "Bukan itu sayang, coba ingat-ingat lagi rasanya waktu itu..." },
-          { text: "Rasanya nyaman dan tentram banget pas kita ngobrol.", isCorrect: true }
-        ],
-        successMessage: "Bener banget. Ngobrol sama kamu hari itu ngasih aku rasa nyaman yang belum pernah aku rasain sebelumnya.",
-        photoUrls: [
-         "https://i.imgur.com/8NZYSBO.jpeg",
-         "https://i.imgur.com/iolftAh.jpeg",
-         "https://i.imgur.com/69woQnA.jpeg"
-        ]
-      },
-      {
-        title: "Kenal Luar Dalam (2024)",
-        narasi: "Makin lama jalan bareng, makin kebongkar deh aslinya. Dari hal konyol kayak kamu yang selalu tahu kalau aku angkat pantat sedikit artinya mau buang angin... sampai perdebatan kecil kita.",
-        question: "Ngomong-ngomong soal perdebatan, siapa sih yang sebenarnya paling sering bertingkah, ngambek, atau marah?",
-        choices: [
-          { text: "Ya jelas aku (Dudut) dong!", isCorrect: false, wrongMessage: "Masa sih? Yakin bukan aku yang sering bertingkah?" },
-          { text: "Sebenernya aku sih yang sering bertingkah, tapi aku gengsi ngaku aja.", isCorrect: true }
-        ],
-        successMessage: "Hahaha, iya deh aku ngaku. Makasih ya udah selalu sabar ngadepin aku dan segala kelakuan absurdku selama ini.",
-        photoUrls: [
-          "https://i.imgur.com/tdmKxE4.jpeg",
-          "https://i.imgur.com/QhUJETl.jpeg",
-          "https://i.imgur.com/HNP7JcO.jpeg"
-        ]
-      },
-      {
-        title: "Tempat Pulang (2025 - 2026)",
-        narasi: "Tiga tahun berlalu. Banyak yang berubah, tapi kamu selalu jadi tempat favoritku.",
-        question: "Dari semua hal yang kita lewati, kapan aku merasa paling bersyukur dan tersentuh olehmu?",
-        choices: [
-          { text: "Saat kamu menerima aku sebagai tempat istirahatmu dengan manja.", isCorrect: true },
-          { text: "Saat kita jalan-jalan tanpa arah.", isCorrect: false, wrongMessage: "Jalan-jalan emang seru, tapi ada momen yang lebih bikin aku tersentuh." }
-        ],
-        successMessage: "Tepat sekali. Walaupun aku tahu kamu juga butuh dimanja, tapi melihat kamu nyaman bersandar dan manja ke aku... itu rasanya luar biasa.",
-        photoUrls: [
-         "https://i.imgur.com/GW3Feef.jpeg",
-         "https://i.imgur.com/stRgbmd.jpeg",
-         "https://i.imgur.com/8tt6A2f.jpeg"
-        ]
-      }
-    ];
+   const chapters = [
+  {
+    title: "Masa Putih Abu-abu (2023)",
+    narasi: "Masih ingat hari itu? Kita masih pakai seragam SMA pas kelas 12, niat awalnya ke Gramedia mau cari buku belajar buat SBMPTN. Tapi, ada satu hal yang paling aku ingat dari momen itu...",
+    question: "Menurut kamu, apa yang bikin aku saat itu mikir, 'Wah, dia nih orangnya'?",
+    choices: [
+      { text: "Pas lihat kamu bingung milih buku tebal.", isCorrect: false, wrongMessage: "Bukan itu sayang, coba ingat-ingat lagi rasanya waktu itu..." },
+      { text: "Rasanya nyaman dan tentram banget pas kita ngobrol.", isCorrect: true }
+    ],
+    successMessage: "Bener banget. Ngobrol sama kamu hari itu ngasih aku rasa nyaman yang belum pernah aku rasain sebelumnya.",
+    photoUrls: [
+      "https://i.imgur.com/8NZYSBO.jpeg",
+      "https://i.imgur.com/iolftAh.jpeg",
+      "https://i.imgur.com/69woQnA.jpeg"
+    ]
+    },
+  {
+    title: "Kenal Luar Dalam (2024)",
+    narasi: "Makin lama jalan bareng, makin kebongkar deh aslinya. Dari hal konyol kayak kamu yang selalu tahu kalau aku angkat pantat sedikit artinya mau buang angin... sampai perdebatan kecil kita.",
+    question: "Ngomong-ngomong soal perdebatan, siapa sih yang sebenarnya paling sering bertingkah, ngambek, atau marah?",
+    choices: [
+      { text: "Ya jelas aku dong!", isCorrect: false, wrongMessage: "Masa sih? Yakin bukan aku yang sering bertingkah?" },
+      { text: "Sebenernya kamu sih yang sering bertingkah, tapi kamu gengsi ngaku aja.", isCorrect: true }
+    ],
+    successMessage: "Hahaha, iya deh aku ngaku. Makasih ya udah selalu sabar ngadepin aku dan segala kelakuan absurdku selama ini.",
+    photoUrls: [
+      "https://i.imgur.com/tdmKxE4.jpeg",
+      "https://i.imgur.com/QhUJETl.jpeg",
+      "https://i.imgur.com/HNP7JcO.jpeg"
+    ]
+  },
+  {
+    title: "Tempat Pulang (2025 - 2026)",
+    narasi: "Tiga tahun berlalu. Banyak yang berubah, tapi kamu selalu jadi tempat favoritku.",
+    question: "Dari semua hal yang kita lewati, kapan aku merasa paling bersyukur dan tersentuh olehmu?",
+    choices: [
+      { text: "Saat aku menerima kamu sebagai tempat istirahatmu dengan manja.", isCorrect: true },
+      { text: "Saat kita jalan-jalan tanpa arah.", isCorrect: false, wrongMessage: "Jalan-jalan emang seru, tapi ada momen yang lebih bikin aku tersentuh." }
+    ],
+    successMessage: "Tepat sekali. Walaupun aku tahu kamu juga butuh dimanja, tapi melihat kamu nyaman bersandar dan manja ke aku... itu rasanya luar biasa.",
+    photoUrls: [
+      "https://i.imgur.com/GW3Feef.jpeg",
+      "https://i.imgur.com/stRgbmd.jpeg",
+      "https://i.imgur.com/8tt6A2f.jpeg"
+    ]
+  }
+];
 
     let currentScreen = 0;
     const contentArea = document.getElementById('content-area');
@@ -745,8 +745,8 @@
       // Typewriter logic
       const p1El = container.querySelector('#epilogue-p1');
 
-      const p1Text = "Selamat bertambah usia, Sayang. Di hari yang spesial ini, aku cuma mau ngucapin terima kasih karena kamu udah jadi versi terbaik dari dirimu sendiri. Semoga di lembaran umur yang baru ini, kamu selalu dikelilingi kebahagiaan, apa yang kamu semogakan bisa tercapai, dan makin sabar ngadepin aku yang kadang suka bertingkah. Kalau sehari-hari aku sibuk ngurusin klien yang mau foto-foto di Popbox Studio, hari ini, mesin waktu dan semua jepretan memori ini eksklusif 100% VIP cuma buat kamu.";
-
+      const p1Text = "Selamat bertambah usia, Sayang. Di hari yang spesial ini, aku cuma mau ngucapin terima kasih karena kamu udah jadi versi terbaik dari dirimu sendiri. Semoga di lembaran umur yang baru ini, kamu selalu dikelilingi kebahagiaan, apa yang kamu semogakan bisa tercapai, dan makin sabar ngadepin aku yang kadang suka bertingkah. Kalau sehari-hari aku sibuk ngurusin kerjaan yang ga ada abisnya, hari ini, mesin waktu dan semua jepretan memori ini eksklusif 100% VIP cuma buat kamu.";
+  
       typeWriter(p1El, p1Text, 40, () => {
         document.getElementById('next-epilogue-btn').classList.remove('hidden');
       });
@@ -780,7 +780,7 @@
           <div class="absolute -top-3 md:-top-4 left-1/2 -translate-x-1/2 w-24 md:w-32 h-6 md:h-8 washi-tape z-20"></div>
           <div id="voucher-content" class="vintage-card bg-[#fffdf0] p-6 md:p-8 mx-auto relative overflow-hidden">
             <p class="font-serif text-sm md:text-base text-[#5c3a21] mb-6 md:mb-8 font-bold leading-relaxed relative z-0 text-center">
-              🎟️ VOUCHER SPESIAL 12 FEBRUARI:<br><br>
+              🎟️ VOUCHER SPESIAL 18 MARET:<br><br>
               <span class="text-lg md:text-xl text-[#b56576]">Bebas Minta Apapun Selama 1 Hari!</span><br>
               <span class="text-xs font-normal text-gray-500 italic mt-3 block leading-normal">(S&K: Selama masih dalam kapasitas dan kemampuanku ya, hehe).</span>
             </p>
