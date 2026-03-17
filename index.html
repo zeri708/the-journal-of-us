@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Untuk Dudut</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Special+Elite&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+    :root {
+      --font-sans: "Playfair Display", ui-sans-serif, system-ui, sans-serif;
+      --font-handwriting: "Caveat", cursive;
+      --font-typewriter: "Special Elite", monospace;
+    }
+
+    body {
+      background-color: #e5e5f7;
+      background-image: radial-gradient(#d1d5db 1px, transparent 1px);
+      background-size: 20px 20px;
+      color: #374151;
+      overflow-x: hidden;
+      font-family: var(--font-sans);
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.25); }
+
+    .font-handwriting { font-family: var(--font-handwriting); }
+    .font-typewriter { font-family: var(--font-typewriter); }
+
+    .paper-bg {
+      background-color: #fdfbf7;
+      background-image: 
+        linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px),
+        url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      background-size: 20px 20px, 20px 20px, 100px 100px;
+      box-shadow: 
+        -2px 0 5px rgba(0,0,0,0.05),
+        0 4px 20px rgba(0,0,0,0.15),
+        inset 4px 0 10px rgba(0,0,0,0.02);
+    }
+
+    .washi-tape {
+      background-color: rgba(255, 182, 193, 0.7);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      backdrop-filter: blur(2px);
+      transform: rotate(-2deg);
+    }
+
+    .washi-tape-2 {
+      background-color: rgba(173, 216, 230, 0.7);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      backdrop-filter: blur(2px);
+      transform: rotate(3deg);
+    }
+
+    .hand-drawn-border {
+      border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+      border: 2px solid #4b5563;
+    }
+
+    .polaroid {
+      background: #fffdfa;
+      padding: 12px 12px 40px 12px;
+      box-shadow: 2px 6px 15px rgba(0,0,0,0.2), inset 0 0 20px rgba(0,0,0,0.02);
+      border: 1px solid #e2d8c3;
+      transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.4s ease;
+    }
+
+    .ruled-paper {
+      background-color: #fdfbf7;
+      background-image: linear-gradient(transparent 95%, #e2d8c3 95%);
+      background-size: 100% 2rem;
+      box-shadow: 2px 3px 6px rgba(0,0,0,0.08);
+      border-radius: 2px;
+      border-left: 2px solid #fca5a5;
+    }
+
+    .grid-paper {
+      background-color: #fcfcfc;
+      background-image: linear-gradient(#e5e7eb 1px, transparent 1px), linear-gradient(90deg, #e5e7eb 1px, transparent 1px);
+      background-size: 16px 16px;
+      box-shadow: 2px 3px 6px rgba(0,0,0,0.08);
+      border-radius: 2px;
+    }
+
+    .embossed-sticker {
+      background: linear-gradient(135deg, #ffffff 0%, #f3ece4 100%);
+      box-shadow: 2px 4px 6px rgba(0,0,0,0.15), inset 1px 1px 2px rgba(255,255,255,0.8);
+      border: 1px solid #e2d8c3;
+      border-radius: 16px;
+      transition: all 0.2s ease;
+    }
+
+    .embossed-sticker:hover {
+      box-shadow: 1px 2px 3px rgba(0,0,0,0.15), inset 1px 1px 2px rgba(255,255,255,0.8);
+      transform: translateY(2px);
+    }
+
+    .embossed-sticker:active {
+      box-shadow: inset 2px 2px 4px rgba(0,0,0,0.1);
+      transform: translateY(4px);
+    }
+
+    .vintage-card {
+      background-color: #f4ecd8;
+      border: 2px dashed #c2a880;
+      box-shadow: 3px 5px 10px rgba(0,0,0,0.15);
+      border-radius: 8px;
+    }
+
+    .paper-page {
+      background-color: #f4ecd8;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(200, 180, 150, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(200, 180, 150, 0.08) 0%, transparent 50%),
+        linear-gradient(to right, rgba(0,0,0,0.06) 0%, transparent 6%, transparent 94%, rgba(0,0,0,0.06) 100%),
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.15'/%3E%3C/svg%3E");
+      box-shadow: inset 10px 0 20px rgba(0,0,0,0.04);
+    }
+
+    .doodle-heart {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23ef4444' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      opacity: 0.5;
+    }
+
+    .doodle-star {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23eab308' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      opacity: 0.5;
+    }
+
+    .doodle-sparkle {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23fbbf24' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3v18'/%3E%3Cpath d='m19 19-14-14'/%3E%3Cpath d='M21 12H3'/%3E%3Cpath d='m19 5-14 14'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      opacity: 0.5;
+    }
+
+    .doodle-arrow {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14'/%3E%3Cpath d='m12 5 7 7-7 7'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      opacity: 0.4;
+    }
+
+    /* Animations */
+    .page-enter {
+      animation: pageFadeIn 0.8s ease-out forwards;
+    }
+    
+    .page-exit {
+      animation: pageTurnLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      transform-origin: left center;
+    }
+
+    @keyframes pageFadeIn {
+      0% { opacity: 0; transform: translateX(20px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes pageTurnLeft {
+      0% { opacity: 1; transform: perspective(1500px) rotateY(0deg); }
+      100% { opacity: 0; transform: perspective(1500px) rotateY(-90deg); }
+    }
+
+    .shake {
+      animation: shake 0.4s ease-in-out;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0) rotate(0); }
+      20% { transform: translateX(-5px) rotate(-1deg); }
+      40% { transform: translateX(5px) rotate(1deg); }
+      60% { transform: translateX(-5px) rotate(-1deg); }
+      80% { transform: translateX(5px) rotate(1deg); }
+    }
+
+    .fade-in {
+      animation: fadeIn 0.5s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes wiggle {
+      0%, 7% { transform: rotateZ(0); }
+      15% { transform: rotateZ(-15deg); }
+      20% { transform: rotateZ(10deg); }
+      25% { transform: rotateZ(-10deg); }
+      30% { transform: rotateZ(6deg); }
+      35% { transform: rotateZ(-4deg); }
+      40%, 100% { transform: rotateZ(0); }
+    }
+    .wiggle { animation: wiggle 2s linear infinite; }
+    
+    .scale-out { animation: scaleOut 0.5s ease forwards; }
+    @keyframes scaleOut {
+      to { transform: scale(0); opacity: 0; }
+    }
+
+    .polaroid-container {
+      position: relative;
+      width: 100%;
+      max-width: 240px;
+      height: 320px;
+      margin: 1rem auto 2rem auto;
+    }
+
+    .polaroid-card {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      cursor: pointer;
+    }
+
+    .polaroid-card.swiped {
+      transform: translateX(200px) rotate(20deg) !important;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .hidden { display: none !important; }
+  </style>
+</head>
+<body>
+  <!-- Lock Screen -->
+  <div id="lock-screen" class="fixed top-0 left-0 w-screen h-screen z-[9999] bg-[#d9c8b4] flex flex-col items-center justify-center p-4 transition-opacity duration-1000" style="background-image: radial-gradient(circle at center, #e6d5c3 0%, #c2b09c 100%);">
+    
+    <!-- Book Cover -->
+    <div class="relative w-full max-w-sm md:max-w-md h-[85vh] max-h-[800px] bg-[#cda776] rounded-r-2xl rounded-l-sm shadow-[15px_15px_35px_rgba(0,0,0,0.3),inset_15px_0_20px_rgba(0,0,0,0.1)] border border-[#b58f5e] flex flex-col items-center justify-center p-6 mx-auto overflow-hidden" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.8%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22 opacity=%220.15%22/%3E%3C/svg%3E');">
+      
+      <!-- Spiral Binding -->
+      <div class="absolute left-1 top-6 bottom-6 w-5 flex flex-col justify-evenly z-20">
+        <div class="w-8 h-2.5 border border-gray-500 rounded-full bg-gradient-to-b from-gray-300 via-gray-100 to-gray-400 shadow-[2px_2px_4px_rgba(0,0,0,0.4)] -ml-3"></div>
+        <div class="w-8 h-2.5 border border-gray-500 rounded-full bg-gradient-to-b from-gray-300 via-gray-100 to-gray-400 shadow-[2px_2px_4px_rgba(0,0,0,0.4)] -ml-3"></div>
+        <div class="w-8 h-2.5 border border-gray-500 rounded-full bg-gradient-to-b from-gray-300 via-gray-100 to-gray-400 shadow-[2px_2px_4px_rgba(0,0,0,0.4)] -ml-3"></div>
+        <div class="w-8 h-2.5 border border-gray-500 rounded-full bg-gradient-to-b from-gray-300 via-gray-100 to-gray-400 shadow-[2px_2px_4px_rgba(0,0,0,0.4)] -ml-3"></div>
+        <div class="w-8 h-2.5 border border-gray-500 rounded-full bg-gradient-to-b from-gray-300 via-gray-100 to-gray-400 shadow-[2px_2px_4px_rgba(0,0,0,0.4)] -ml-3"></div>
+        <div class="w-8 h-2.5 border border-gray-500 rounded-full bg-gradient-to-b from-gray-300 via-gray-100 to-gray-400 shadow-[2px_2px_4px_rgba(0,0,0,0.4)] -ml-3"></div>
+        <div class="w-8 h-2.5 border border-gray-500 rounded-full bg-gradient-to-b from-gray-300 via-gray-100 to-gray-400 shadow-[2px_2px_4px_rgba(0,0,0,0.4)] -ml-3"></div>
+        <div class="w-8 h-2.5 border border-gray-500 rounded-full bg-gradient-to-b from-gray-300 via-gray-100 to-gray-400 shadow-[2px_2px_4px_rgba(0,0,0,0.4)] -ml-3"></div>
+        <div class="w-8 h-2.5 border border-gray-500 rounded-full bg-gradient-to-b from-gray-300 via-gray-100 to-gray-400 shadow-[2px_2px_4px_rgba(0,0,0,0.4)] -ml-3"></div>
+        <div class="w-8 h-2.5 border border-gray-500 rounded-full bg-gradient-to-b from-gray-300 via-gray-100 to-gray-400 shadow-[2px_2px_4px_rgba(0,0,0,0.4)] -ml-3"></div>
+      </div>
+
+      <!-- Metal Corners -->
+      <div class="absolute top-0 right-0 w-12 h-12 bg-gradient-to-bl from-[#d4af37] to-[#8a5a19] shadow-[inset_1px_1px_2px_rgba(255,255,255,0.4)] z-10" style="clip-path: polygon(100% 0, 0 0, 100% 100%);">
+        <div class="absolute top-2 right-2 w-1.5 h-1.5 rounded-full bg-[#5c3a21] shadow-[inset_0_1px_1px_rgba(0,0,0,0.5)]"></div>
+      </div>
+      <div class="absolute bottom-0 right-0 w-12 h-12 bg-gradient-to-tl from-[#d4af37] to-[#8a5a19] shadow-[inset_1px_1px_2px_rgba(255,255,255,0.4)] z-10" style="clip-path: polygon(100% 100%, 0 100%, 100% 0);">
+        <div class="absolute bottom-2 right-2 w-1.5 h-1.5 rounded-full bg-[#5c3a21] shadow-[inset_0_1px_1px_rgba(0,0,0,0.5)]"></div>
+      </div>
+
+      <!-- Scribbles -->
+      <div class="absolute bottom-6 right-8 font-handwriting text-[#5c3a21]/60 text-xl md:text-2xl transform -rotate-6 select-none">2023 - 2026</div>
+      <div class="absolute top-8 right-12 text-pink-700/40 text-3xl transform rotate-12 select-none">❤️</div>
+      <div class="absolute top-20 left-10 w-8 h-8 doodle-star transform -rotate-12"></div>
+      <div class="absolute bottom-20 left-8 w-6 h-6 doodle-heart transform rotate-12"></div>
+
+      <div class="relative z-10 w-full flex flex-col items-center">
+        <!-- Title Label -->
+        <div class="relative bg-[#fdfbf7] border-2 border-dashed border-[#a68a61] rounded-[100px] py-6 px-8 shadow-[2px_4px_8px_rgba(0,0,0,0.15)] transform -rotate-2 mb-8 mt-4 w-11/12 max-w-[320px] flex justify-center">
+          <!-- Washi Tape -->
+          <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-24 h-7 bg-pink-200/80 rotate-3 shadow-sm" style="background-image: repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(255,255,255,0.4) 5px, rgba(255,255,255,0.4) 10px);"></div>
+          
+          <!-- Lock & String -->
+          <div class="absolute -left-4 top-1/2 -translate-y-1/2 flex items-center">
+            <div class="text-3xl md:text-4xl z-10 drop-shadow-md animate-bounce" style="animation-duration: 3s;">🔒</div>
+            <div class="w-10 h-0.5 bg-[#5c3a21] -ml-3 rotate-12 shadow-sm"></div>
+          </div>
+          
+          <h1 class="font-serif italic text-3xl md:text-4xl text-[#5c3a21] tracking-wide drop-shadow-sm text-center" style="font-family: 'Playfair Display', serif;">The Journey of Us</h1>
+        </div>
+
+        <!-- Subtitle Graph Paper -->
+        <div class="bg-[#fcfcfc] p-3 shadow-[2px_3px_6px_rgba(0,0,0,0.15)] transform rotate-2 mb-10 relative w-10/12 max-w-[280px]" style="background-image: linear-gradient(#e5e7eb 1px, transparent 1px), linear-gradient(90deg, #e5e7eb 1px, transparent 1px); background-size: 12px 12px;">
+          <p class="font-handwriting text-xl md:text-2xl text-[#374151] text-center leading-tight">Masukkan PIN rahasia untuk membuka lembaran memori...</p>
+        </div>
+        
+        <div id="pin-container" class="flex flex-col items-center fade-in w-full">
+          <!-- PIN Inputs (Wooden Tokens) -->
+          <div class="flex gap-2 md:gap-3 mb-10 justify-center" id="pin-inputs">
+            <input type="password" maxlength="1" class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-[#e6ccab] to-[#c29b6e] border border-[#8a5a19] text-[#4a2e15] text-center text-2xl font-serif shadow-[2px_4px_6px_rgba(0,0,0,0.4),inset_0_-2px_4px_rgba(255,255,255,0.3),inset_0_2px_4px_rgba(0,0,0,0.2)] focus:outline-none focus:ring-2 focus:ring-pink-400 transition-all" />
+            <input type="password" maxlength="1" class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-[#e6ccab] to-[#c29b6e] border border-[#8a5a19] text-[#4a2e15] text-center text-2xl font-serif shadow-[2px_4px_6px_rgba(0,0,0,0.4),inset_0_-2px_4px_rgba(255,255,255,0.3),inset_0_2px_4px_rgba(0,0,0,0.2)] focus:outline-none focus:ring-2 focus:ring-pink-400 transition-all" />
+            <input type="password" maxlength="1" class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-[#e6ccab] to-[#c29b6e] border border-[#8a5a19] text-[#4a2e15] text-center text-2xl font-serif shadow-[2px_4px_6px_rgba(0,0,0,0.4),inset_0_-2px_4px_rgba(255,255,255,0.3),inset_0_2px_4px_rgba(0,0,0,0.2)] focus:outline-none focus:ring-2 focus:ring-pink-400 transition-all" />
+            <input type="password" maxlength="1" class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-[#e6ccab] to-[#c29b6e] border border-[#8a5a19] text-[#4a2e15] text-center text-2xl font-serif shadow-[2px_4px_6px_rgba(0,0,0,0.4),inset_0_-2px_4px_rgba(255,255,255,0.3),inset_0_2px_4px_rgba(0,0,0,0.2)] focus:outline-none focus:ring-2 focus:ring-pink-400 transition-all" />
+            <input type="password" maxlength="1" class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-[#e6ccab] to-[#c29b6e] border border-[#8a5a19] text-[#4a2e15] text-center text-2xl font-serif shadow-[2px_4px_6px_rgba(0,0,0,0.4),inset_0_-2px_4px_rgba(255,255,255,0.3),inset_0_2px_4px_rgba(0,0,0,0.2)] focus:outline-none focus:ring-2 focus:ring-pink-400 transition-all" />
+            <input type="password" maxlength="1" class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-[#e6ccab] to-[#c29b6e] border border-[#8a5a19] text-[#4a2e15] text-center text-2xl font-serif shadow-[2px_4px_6px_rgba(0,0,0,0.4),inset_0_-2px_4px_rgba(255,255,255,0.3),inset_0_2px_4px_rgba(0,0,0,0.2)] focus:outline-none focus:ring-2 focus:ring-pink-400 transition-all" />
+          </div>
+          
+          <!-- Button (Ribbon/Sticker) -->
+          <button onclick="checkPin()" class="px-10 py-3 bg-gradient-to-r from-[#e5989b] to-[#b56576] text-[#fdfbf7] font-serif italic text-xl md:text-2xl rounded-sm shadow-[2px_4px_8px_rgba(0,0,0,0.3)] border border-dashed border-white/60 relative overflow-hidden group transition-all duration-300 hover:scale-105 hover:shadow-[2px_6px_12px_rgba(0,0,0,0.4)]">
+            <span class="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
+            Buka Kunci
+          </button>
+        </div>
+
+        <!-- Easter Egg Container -->
+        <div id="easter-egg-container" class="hidden flex-col items-center fade-in bg-[#fdfbf7] p-5 md:p-6 rounded-sm shadow-[2px_3px_8px_rgba(0,0,0,0.15)] border border-dashed border-[#c2a880] transform rotate-1 w-11/12 max-w-[340px]">
+          <p class="font-handwriting text-xl md:text-2xl text-[#4a2e15] leading-relaxed mb-5 text-center">
+            "Hahaha, gemes banget sih maksa pengen buka! Sabar ya, Dudut sayang... Mesin waktu dan kado spesialnya baru bisa dibuka tepat di hari ulang tahunmu. Tunggu sampai waktunya tiba ya, I love you! ❤️"
+          </p>
+          <div id="countdown-timer" class="font-serif text-2xl md:text-3xl font-bold text-[#b56576] mb-5 drop-shadow-sm text-center" style="font-family: 'Playfair Display', serif;"></div>
+          <button id="auto-unlock-btn" onclick="unlockJournal()" class="hidden px-8 py-3 bg-gradient-to-r from-[#e5989b] to-[#b56576] text-[#fdfbf7] font-serif italic text-xl rounded-sm shadow-[2px_4px_8px_rgba(0,0,0,0.3)] border border-dashed border-white/60 transition-all hover:scale-105 animate-bounce">
+            Waktunya Tiba! Buka Kado Sekarang 🎁
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container" class="fixed top-10 left-1/2 -translate-x-1/2 z-[10000] flex flex-col gap-2 pointer-events-none"></div>
+
+  <div class="min-h-screen flex items-center justify-center p-2 sm:p-4 md:p-8 bg-[#d9c8b4]" style="background-image: radial-gradient(circle at center, #e6d5c3 0%, #c2b09c 100%);">
+    <div id="book-container" class="relative w-full max-w-2xl h-[92dvh] md:h-[85dvh] max-h-[850px] bg-[#fdfbf7] rounded-r-2xl rounded-l-sm shadow-[15px_15px_35px_rgba(0,0,0,0.3),inset_15px_0_20px_rgba(0,0,0,0.05)] border border-[#d4c5b0] overflow-hidden" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.8%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22 opacity=%220.08%22/%3E%3C/svg%3E');">
+      
+      <!-- Spiral Binding -->
+      <div class="absolute left-1 top-6 bottom-6 w-5 flex flex-col justify-evenly z-[60] pointer-events-none">
+        <div class="w-8 h-2.5 border border-gray-500 rounded-full bg-gradient-to-b from-gray-300 via-gray-100 to-gray-400 shadow-[2px_2px_4px_rgba(0,0,0,0.4)] -ml-3"></div>
+        <div class="w-8 h-2.5 border border-gray-500 rounded-full bg-gradient-to-b from-gray-300 via-gray-100 to-gray-400 shadow-[2px_2px_4px_rgba(0,0,0,0.4)] -ml-3"></div>
+        <div class="w-8 h-2.5 border border-gray-500 rounded-full bg-gradient-to-b from-gray-300 via-gray-100 to-gray-400 shadow-[2px_2px_4px_rgba(0,0,0,0.4)] -ml-3"></div>
+        <div class="w-8 h-2.5 border border-gray-500 rounded-full bg-gradient-to-b from-gray-300 via-gray-100 to-gray-400 shadow-[2px_2px_4px_rgba(0,0,0,0.4)] -ml-3"></div>
+        <div class="w-8 h-2.5 border border-gray-500 rounded-full bg-gradient-to-b from-gray-300 via-gray-100 to-gray-400 shadow-[2px_2px_4px_rgba(0,0,0,0.4)] -ml-3"></div>
+        <div class="w-8 h-2.5 border border-gray-500 rounded-full bg-gradient-to-b from-gray-300 via-gray-100 to-gray-400 shadow-[2px_2px_4px_rgba(0,0,0,0.4)] -ml-3"></div>
+        <div class="w-8 h-2.5 border border-gray-500 rounded-full bg-gradient-to-b from-gray-300 via-gray-100 to-gray-400 shadow-[2px_2px_4px_rgba(0,0,0,0.4)] -ml-3"></div>
+        <div class="w-8 h-2.5 border border-gray-500 rounded-full bg-gradient-to-b from-gray-300 via-gray-100 to-gray-400 shadow-[2px_2px_4px_rgba(0,0,0,0.4)] -ml-3"></div>
+        <div class="w-8 h-2.5 border border-gray-500 rounded-full bg-gradient-to-b from-gray-300 via-gray-100 to-gray-400 shadow-[2px_2px_4px_rgba(0,0,0,0.4)] -ml-3"></div>
+        <div class="w-8 h-2.5 border border-gray-500 rounded-full bg-gradient-to-b from-gray-300 via-gray-100 to-gray-400 shadow-[2px_2px_4px_rgba(0,0,0,0.4)] -ml-3"></div>
+        <div class="w-8 h-2.5 border border-gray-500 rounded-full bg-gradient-to-b from-gray-300 via-gray-100 to-gray-400 shadow-[2px_2px_4px_rgba(0,0,0,0.4)] -ml-3"></div>
+        <div class="w-8 h-2.5 border border-gray-500 rounded-full bg-gradient-to-b from-gray-300 via-gray-100 to-gray-400 shadow-[2px_2px_4px_rgba(0,0,0,0.4)] -ml-3"></div>
+      </div>
+      
+      <!-- Inner Page Shadow -->
+      <div class="absolute left-0 top-0 bottom-0 w-10 bg-gradient-to-r from-[#d4c5b0] via-[#f0e8d5] to-transparent z-50 pointer-events-none opacity-80 border-r border-[#d4c5b0]/30"></div>
+      
+      <div id="content-area" class="w-full h-full relative"></div>
+    </div>
+  </div>
+
+  <audio id="global-audio" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" loop></audio>
+
+  <script>
+    window.isPlayingAudio = false;
+    
+    // Data
+    const chapters = [
+      {
+        title: "Masa Putih Abu-abu (2023)",
+        narasi: "Masih ingat hari itu? Kita masih pakai seragam SMA kelas 12, niat awalnya ke Gramedia mau cari buku belajar buat SBMPTN. Tapi, ada satu hal yang paling aku ingat dari momen itu...",
+        question: "Menurut kamu, apa yang bikin aku saat itu mikir, 'Wah, dia nih orangnya'?",
+        choices: [
+          { text: "Pas lihat kamu bingung milih buku tebal.", isCorrect: false, wrongMessage: "Bukan itu sayang, coba ingat-ingat lagi rasanya waktu itu..." },
+          { text: "Rasanya nyaman dan tentram banget pas kita ngobrol.", isCorrect: true }
+        ],
+        successMessage: "Bener banget. Ngobrol sama kamu hari itu ngasih aku rasa nyaman yang belum pernah aku rasain sebelumnya.",
+        photoUrls: [
+          "https://picsum.photos/seed/gramedia1/400/500",
+          "https://picsum.photos/seed/gramedia2/400/500",
+          "https://picsum.photos/seed/gramedia3/400/500"
+        ]
+      },
+      {
+        title: "Kenal Luar Dalam (2024)",
+        narasi: "Makin lama jalan bareng, makin kebongkar deh aslinya. Dari hal konyol kayak kamu yang selalu tahu kalau aku angkat pantat sedikit artinya mau buang angin... sampai perdebatan kecil kita.",
+        question: "Ngomong-ngomong soal perdebatan, siapa sih yang sebenarnya paling sering bertingkah, ngambek, atau marah?",
+        choices: [
+          { text: "Ya jelas aku (Dudut) dong!", isCorrect: false, wrongMessage: "Masa sih? Yakin bukan aku yang sering bertingkah?" },
+          { text: "Sebenernya aku sih yang sering bertingkah, tapi aku gengsi ngaku aja.", isCorrect: true }
+        ],
+        successMessage: "Hahaha, iya deh aku ngaku. Makasih ya udah selalu sabar ngadepin aku dan segala kelakuan absurdku selama ini.",
+        photoUrls: [
+          "https://picsum.photos/seed/laugh1/400/500",
+          "https://picsum.photos/seed/laugh2/400/500",
+          "https://picsum.photos/seed/laugh3/400/500"
+        ]
+      },
+      {
+        title: "Tempat Pulang (2025 - 2026)",
+        narasi: "Tiga tahun berlalu. Banyak yang berubah, tapi kamu selalu jadi tempat favoritku.",
+        question: "Dari semua hal yang kita lewati, kapan aku merasa paling bersyukur dan tersentuh olehmu?",
+        choices: [
+          { text: "Saat kamu menerima aku sebagai tempat istirahatmu dengan manja.", isCorrect: true },
+          { text: "Saat kita jalan-jalan tanpa arah.", isCorrect: false, wrongMessage: "Jalan-jalan emang seru, tapi ada momen yang lebih bikin aku tersentuh." }
+        ],
+        successMessage: "Tepat sekali. Walaupun aku tahu kamu juga butuh dimanja, tapi melihat kamu nyaman bersandar dan manja ke aku... itu rasanya luar biasa.",
+        photoUrls: [
+          "https://picsum.photos/seed/hug1/400/500",
+          "https://picsum.photos/seed/hug2/400/500",
+          "https://picsum.photos/seed/hug3/400/500"
+        ]
+      }
+    ];
+
+    let currentScreen = 0;
+    const contentArea = document.getElementById('content-area');
+
+    // Icons
+    const arrowRightIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>`;
+    const playIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></svg>`;
+    const pauseIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>`;
+    const musicIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>`;
+
+    // Typewriter logic
+    function typeWriter(element, text, speed, onComplete) {
+      element.innerHTML = '';
+      let i = 0;
+      let isSkipped = false;
+      
+      const cursor = document.createElement('span');
+      cursor.className = 'animate-pulse text-gray-400';
+      cursor.textContent = '|';
+      
+      const textSpan = document.createElement('span');
+      textSpan.className = 'cursor-pointer';
+      textSpan.title = 'Klik untuk mempercepat';
+      
+      element.appendChild(textSpan);
+      element.appendChild(cursor);
+
+      const interval = setInterval(() => {
+        if (isSkipped) return;
+        if (i < text.length) {
+          textSpan.textContent += text.charAt(i);
+          i++;
+        } else {
+          clearInterval(interval);
+          cursor.remove();
+          if (onComplete) onComplete();
+        }
+      }, speed);
+
+      textSpan.addEventListener('click', () => {
+        if (!isSkipped) {
+          isSkipped = true;
+          clearInterval(interval);
+          textSpan.textContent = text;
+          cursor.remove();
+          if (onComplete) onComplete();
+        }
+      });
+    }
+
+    function renderScreen() {
+      const oldContent = contentArea.firstElementChild;
+      if (oldContent) {
+        oldContent.classList.remove('page-enter');
+        oldContent.classList.add('page-exit');
+        setTimeout(() => {
+          mountNewScreen();
+        }, 500);
+      } else {
+        mountNewScreen();
+      }
+    }
+
+    function mountNewScreen() {
+      contentArea.innerHTML = '';
+      const screenDiv = document.createElement('div');
+      screenDiv.className = 'w-full h-full flex flex-col p-6 sm:p-8 md:p-12 relative overflow-y-auto overflow-x-hidden page-enter pl-10 md:pl-14 paper-page';
+      
+      if (currentScreen === 0) {
+        renderPrologue(screenDiv);
+      } else if (currentScreen <= chapters.length) {
+        renderChapter(screenDiv, chapters[currentScreen - 1], currentScreen);
+      } else if (currentScreen === chapters.length + 1) {
+        renderEpiloguePart1(screenDiv);
+      } else {
+        renderEpiloguePart2(screenDiv);
+      }
+      
+      contentArea.appendChild(screenDiv);
+    }
+
+    window.nextScreen = function() {
+      if (currentScreen <= chapters.length + 1) {
+        currentScreen++;
+        renderScreen();
+      }
+    }
+
+    function renderPrologue(container) {
+      container.classList.add('items-center', 'justify-center', 'text-center');
+      
+      container.innerHTML = `
+        <div class="absolute top-4 left-8 md:top-8 md:left-12 w-16 md:w-24 h-6 md:h-8 washi-tape z-10 rotate-3"></div>
+        <div class="absolute bottom-4 right-4 md:bottom-8 md:right-8 w-16 md:w-24 h-6 md:h-8 washi-tape-2 z-10 -rotate-3"></div>
+        
+        <div class="absolute top-1/4 right-6 w-8 h-8 doodle-star transform rotate-12"></div>
+        <div class="absolute bottom-1/4 left-6 w-6 h-6 doodle-heart transform -rotate-6"></div>
+        
+        <div class="relative bg-[#fdfbf7] border-2 border-dashed border-[#a68a61] rounded-[100px] py-4 px-8 shadow-[2px_4px_8px_rgba(0,0,0,0.1)] transform -rotate-2 mb-8 mt-4 w-10/12 max-w-[320px] flex justify-center mx-auto">
+          <h1 id="secret-title" class="font-serif italic text-4xl sm:text-5xl md:text-6xl text-[#b56576] select-none cursor-default drop-shadow-sm" style="font-family: 'Playfair Display', serif;">Untuk Dudut</h1>
+        </div>
+
+        <div class="grid-paper p-6 md:p-8 transform rotate-1 mb-8 md:mb-12 w-11/12 max-w-md mx-auto relative">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-5 bg-pink-200/80 -rotate-2 shadow-sm" style="background-image: repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(255,255,255,0.4) 5px, rgba(255,255,255,0.4) 10px);"></div>
+          <p id="prologue-text" class="font-handwriting text-[#374151] leading-relaxed text-xl sm:text-2xl md:text-3xl min-h-[120px] md:min-h-[150px] text-center"></p>
+        </div>
+
+        <div id="prologue-btn-container" class="hidden fade-in mt-4">
+          <button onclick="nextScreen()" class="embossed-sticker px-6 py-3 md:px-8 md:py-4 text-[#5c3a21] font-serif italic text-xl md:text-2xl flex items-center gap-2 mx-auto">
+            Buka Mesin Waktu ${arrowRightIcon}
+          </button>
+        </div>
+      `;
+
+      const textEl = container.querySelector('#prologue-text');
+      const btnContainer = container.querySelector('#prologue-btn-container');
+      const titleEl = container.querySelector('#secret-title');
+      
+      // Easter Egg Trigger
+      let clickCount = 0;
+      titleEl.addEventListener('click', () => {
+        clickCount++;
+        if (clickCount === 5) {
+          triggerEasterEgg();
+          clickCount = 0; // Reset after triggering
+        }
+      });
+
+      const text = "Halo, Sayang... (atau di hari spesial ini, aku boleh panggil Dudut?). Selamat datang di mesin waktu kita. Sebelum merayakan pergantian usiamu hari ini, mari kita buka kembali tiga babak cerita yang sudah kita lewati bersama.";
+      
+      typeWriter(textEl, text, 40, () => {
+        btnContainer.classList.remove('hidden');
+      });
+    }
+
+    function renderChapter(container, data, chapterNumber) {
+      container.innerHTML = `
+        <div class="absolute top-2 right-4 md:top-4 md:right-8 w-16 md:w-20 h-5 md:h-6 washi-tape z-10 rotate-2"></div>
+        <div class="absolute bottom-10 left-4 w-12 h-4 washi-tape-2 z-10 -rotate-6 opacity-70"></div>
+        
+        <div class="absolute top-20 left-6 w-6 h-6 doodle-sparkle transform rotate-12"></div>
+        <div class="absolute top-1/2 right-4 w-8 h-8 doodle-arrow transform rotate-45 opacity-50"></div>
+        
+        <div class="mb-6 md:mb-8 mt-2 md:mt-0 text-center relative z-10">
+          <span class="font-serif italic text-lg md:text-xl text-[#b56576] bg-white/60 px-3 py-1 rounded-full shadow-sm border border-pink-100">Chapter ${chapterNumber}</span>
+          <h2 class="font-handwriting text-4xl sm:text-5xl md:text-6xl text-[#5c3a21] mt-3 transform -rotate-2 drop-shadow-sm">${data.title}</h2>
+        </div>
+        
+        <div class="ruled-paper p-5 md:p-8 transform -rotate-1 mb-6 md:mb-8 w-11/12 max-w-lg mx-auto relative">
+          <div class="absolute -top-3 right-4 w-12 h-4 bg-blue-200/80 rotate-3 shadow-sm"></div>
+          <div id="chapter-narasi" class="font-handwriting text-[#374151] text-xl md:text-2xl min-h-[100px] md:min-h-[120px] text-left" style="line-height: 2rem; padding-top: 0.2rem;"></div>
+        </div>
+        
+        <div id="question-area" class="space-y-4 md:space-y-6 mt-auto hidden fade-in px-2 md:px-4 w-full">
+          <div class="bg-[#fcfcfc] p-4 md:p-6 shadow-sm border border-gray-200 transform rotate-1 max-w-lg mx-auto relative">
+            <div class="absolute -left-2 top-1/2 -translate-y-1/2 w-4 h-12 bg-yellow-200/80 shadow-sm"></div>
+            <p class="font-handwriting text-2xl md:text-3xl text-[#b56576] text-center leading-snug">${data.question}</p>
+          </div>
+          <div id="choices-container" class="grid gap-3 md:gap-4 max-w-lg mx-auto w-full"></div>
+          <p id="wrong-alert" class="text-red-500 font-handwriting text-xl md:text-2xl mt-4 text-center hidden fade-in"></p>
+        </div>
+
+        <div id="success-area" class="mt-4 flex flex-col items-center pb-6 md:pb-8 hidden fade-in w-full">
+          <div id="polaroid-stack" class="polaroid-container scale-90 md:scale-100 origin-top"></div>
+          <div class="grid-paper p-5 md:p-6 transform rotate-2 mt-6 max-w-lg w-11/12">
+            <div id="success-message" class="font-handwriting text-xl md:text-2xl text-center text-[#374151] min-h-[60px] md:min-h-[80px] leading-relaxed"></div>
+          </div>
+          <div id="next-btn-container" class="hidden fade-in mt-6">
+            <button onclick="nextScreen()" class="embossed-sticker px-6 py-3 md:px-8 md:py-4 text-[#5c3a21] font-serif italic text-xl md:text-2xl">
+              Balik Halaman &rarr;
+            </button>
+          </div>
+        </div>
+      `;
+
+      const narasiEl = container.querySelector('#chapter-narasi');
+      const questionArea = container.querySelector('#question-area');
+      const choicesContainer = container.querySelector('#choices-container');
+      const wrongAlert = container.querySelector('#wrong-alert');
+      const successArea = container.querySelector('#success-area');
+      const polaroidStack = container.querySelector('#polaroid-stack');
+      const successMessageEl = container.querySelector('#success-message');
+      const nextBtnContainer = container.querySelector('#next-btn-container');
+
+      typeWriter(narasiEl, data.narasi, 40, () => {
+        questionArea.classList.remove('hidden');
+      });
+
+      data.choices.forEach((choice, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'embossed-sticker w-full p-4 md:p-5 text-left font-sans text-sm md:text-base text-gray-700 hover:text-[#b56576] relative overflow-hidden group flex items-center leading-relaxed';
+        btn.innerHTML = `<span class="font-bold text-lg mr-3 text-[#a68a61]">${String.fromCharCode(65 + idx)}.</span> <span>${choice.text}</span>`;
+        btn.onclick = () => {
+          if (choice.isCorrect) {
+            questionArea.classList.add('hidden');
+            successArea.classList.remove('hidden');
+            renderPolaroids(polaroidStack, data.photoUrls, () => {
+              typeWriter(successMessageEl, data.successMessage, 40, () => {
+                nextBtnContainer.classList.remove('hidden');
+              });
+            });
+          } else {
+            btn.classList.add('shake', 'bg-red-50', 'border-red-400', 'text-red-800');
+            btn.classList.remove('bg-white', 'hover:bg-pink-50', 'border-gray-400', 'text-gray-700');
+            wrongAlert.textContent = choice.wrongMessage || "Yakin? Coba ingat-ingat lagi deh kelakuan siapa...";
+            wrongAlert.classList.remove('hidden');
+            
+            setTimeout(() => {
+              btn.classList.remove('shake', 'bg-red-50', 'border-red-400', 'text-red-800');
+              btn.classList.add('bg-white', 'hover:bg-pink-50', 'border-gray-400', 'text-gray-700');
+            }, 500);
+            
+            setTimeout(() => {
+              wrongAlert.classList.add('hidden');
+            }, 3500);
+          }
+        };
+        choicesContainer.appendChild(btn);
+      });
+    }
+
+    function renderPolaroids(container, photos, onAllSwiped) {
+      container.innerHTML = '';
+      let currentIndex = 0;
+
+      photos.forEach((photo, index) => {
+        const card = document.createElement('div');
+        card.className = 'polaroid-card polaroid';
+        
+        // Calculate initial styles
+        const isTop = index === currentIndex;
+        const scale = isTop ? 1 : 0.95 - (index - currentIndex) * 0.05;
+        const y = (index - currentIndex) * 10;
+        const rotate = isTop ? (index % 2 === 0 ? -2 : 2) : (index % 2 === 0 ? 4 : -4);
+        const zIndex = photos.length - index;
+
+        card.style.transform = `scale(${scale}) translateY(${y}px) rotate(${rotate}deg)`;
+        card.style.zIndex = zIndex;
+        if (index < currentIndex) card.style.display = 'none';
+
+        card.innerHTML = `
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-24 h-8 washi-tape-2 z-10"></div>
+          <img src="${photo}" alt="Memory ${index + 1}" class="w-full h-48 object-cover bg-gray-200 pointer-events-none border border-gray-100" />
+          <p class="font-handwriting text-sm text-center mt-3 text-gray-500 animate-pulse ${index === photos.length - 1 ? 'hidden' : ''}">Klik foto untuk melihat selanjutnya</p>
+        `;
+
+        card.onclick = () => {
+          if (index === currentIndex && currentIndex < photos.length - 1) {
+            card.classList.add('swiped');
+            currentIndex++;
+            updatePolaroids();
+            if (currentIndex === photos.length - 1) {
+              onAllSwiped();
+            }
+          }
+        };
+
+        container.appendChild(card);
+      });
+
+      function updatePolaroids() {
+        const cards = container.children;
+        for (let i = 0; i < cards.length; i++) {
+          if (i < currentIndex) continue;
+          const card = cards[i];
+          const isTop = i === currentIndex;
+          const scale = isTop ? 1 : 0.95 - (i - currentIndex) * 0.05;
+          const y = (i - currentIndex) * 10;
+          const rotate = isTop ? (i % 2 === 0 ? -2 : 2) : (i % 2 === 0 ? 4 : -4);
+          
+          card.style.transform = `scale(${scale}) translateY(${y}px) rotate(${rotate}deg)`;
+          if (isTop) {
+            card.classList.add('hover:scale-105');
+          } else {
+            card.classList.remove('hover:scale-105');
+          }
+        }
+      }
+      
+      // If only 1 photo or already at end
+      if (photos.length <= 1) {
+        onAllSwiped();
+      }
+    }
+
+    function renderEpiloguePart1(container) {
+      container.classList.add('items-center', 'justify-center', 'text-center');
+      
+      container.innerHTML = `
+        <div class="absolute top-2 right-4 md:top-4 md:right-8 w-16 md:w-20 h-5 md:h-6 washi-tape z-10 -rotate-2"></div>
+        <div class="absolute bottom-10 left-6 w-12 h-4 washi-tape-2 z-10 rotate-6 opacity-70"></div>
+        
+        <div class="absolute top-1/4 left-8 w-8 h-8 doodle-sparkle transform -rotate-12"></div>
+        <div class="absolute bottom-1/4 right-8 w-6 h-6 doodle-heart transform rotate-12"></div>
+        
+        <div class="mb-6 md:mb-8 mt-2 md:mt-0 text-center relative z-10">
+          <h2 class="font-serif italic text-4xl sm:text-5xl md:text-6xl text-[#b56576] transform -rotate-1 drop-shadow-sm" style="font-family: 'Playfair Display', serif;">Epilog</h2>
+          <p class="font-handwriting text-xl md:text-2xl text-gray-500 mt-2">18 Maret</p>
+        </div>
+
+        <div class="vintage-card p-6 md:p-8 transform rotate-1 mb-8 md:mb-10 max-w-lg mx-auto text-left space-y-4 px-4 relative">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-12 h-4 bg-pink-200/80 rotate-2 shadow-sm"></div>
+          <p id="epilogue-p1" class="font-handwriting text-[#374151] text-xl md:text-2xl leading-loose min-h-[120px] md:min-h-[140px] text-justify"></p>
+        </div>
+
+        <div class="mb-4 md:mb-6 flex flex-col items-center">
+          <button id="audio-btn" class="embossed-sticker flex items-center gap-2 px-4 py-2 bg-white text-[#b56576] transition-all shadow-sm">
+            <span id="audio-icon">${window.isPlayingAudio ? pauseIcon : playIcon}</span>
+            <span class="font-serif italic text-lg md:text-xl">Pesan Suara Spesial</span>
+            <span class="opacity-50">${musicIcon}</span>
+          </button>
+        </div>
+
+        <div id="next-epilogue-btn" class="hidden fade-in mt-4">
+          <button onclick="nextScreen()" class="embossed-sticker px-6 py-3 md:px-8 md:py-4 text-[#5c3a21] font-serif italic text-xl md:text-2xl flex items-center gap-2 mx-auto">
+            Ada Kado Spesial Nih 🎁
+          </button>
+        </div>
+      `;
+
+      // Audio logic
+      const audioEl = document.getElementById('global-audio');
+      const audioBtn = container.querySelector('#audio-btn');
+      const audioIcon = container.querySelector('#audio-icon');
+
+      audioBtn.onclick = () => {
+        if (window.isPlayingAudio) {
+          audioEl.pause();
+          audioIcon.innerHTML = playIcon;
+        } else {
+          audioEl.play();
+          audioIcon.innerHTML = pauseIcon;
+        }
+        window.isPlayingAudio = !window.isPlayingAudio;
+      };
+
+      // Typewriter logic
+      const p1El = container.querySelector('#epilogue-p1');
+
+      const p1Text = "Selamat bertambah usia, Sayang. Di hari yang spesial ini, aku cuma mau ngucapin terima kasih karena kamu udah jadi versi terbaik dari dirimu sendiri. Semoga di lembaran umur yang baru ini, kamu selalu dikelilingi kebahagiaan, apa yang kamu semogakan bisa tercapai, dan makin sabar ngadepin aku yang kadang suka bertingkah. Kalau sehari-hari aku sibuk ngurusin klien yang mau foto-foto di Popbox Studio, hari ini, mesin waktu dan semua jepretan memori ini eksklusif 100% VIP cuma buat kamu.";
+
+      typeWriter(p1El, p1Text, 40, () => {
+        document.getElementById('next-epilogue-btn').classList.remove('hidden');
+      });
+    }
+
+    function renderEpiloguePart2(container) {
+      container.classList.add('items-center', 'justify-center', 'text-center');
+      
+      container.innerHTML = `
+        <div class="absolute top-4 left-8 md:top-8 md:left-12 w-16 md:w-24 h-6 md:h-8 washi-tape z-10 rotate-3"></div>
+        <div class="absolute bottom-4 right-4 md:bottom-8 md:right-8 w-16 md:w-24 h-6 md:h-8 washi-tape-2 z-10 -rotate-3"></div>
+        
+        <div class="mb-6 md:mb-8 mt-2 md:mt-0 text-center relative z-10">
+          <h2 class="font-serif italic text-4xl sm:text-5xl md:text-6xl text-[#b56576] transform -rotate-1 drop-shadow-sm" style="font-family: 'Playfair Display', serif;">Happy Anniversary</h2>
+          <p class="font-handwriting text-xl md:text-2xl text-gray-500 mt-2">12 Februari</p>
+        </div>
+
+        <div class="vintage-card p-6 md:p-8 transform -rotate-1 mb-8 md:mb-10 max-w-lg mx-auto text-left space-y-4 px-4 relative">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-12 h-4 bg-pink-200/80 -rotate-2 shadow-sm"></div>
+          <p id="epilogue-p2" class="font-handwriting text-[#374151] text-xl md:text-2xl leading-loose min-h-[60px] md:min-h-[80px] text-justify"></p>
+        </div>
+
+        <div id="gift-container" class="mt-4 mb-8 flex flex-col items-center cursor-pointer hidden fade-in" onclick="openGift()">
+          <div class="text-7xl md:text-8xl wiggle drop-shadow-lg">🎁</div>
+          <div class="bg-white/80 px-4 py-2 rounded-full shadow-sm border border-pink-100 mt-4 transform -rotate-2">
+            <p class="font-handwriting text-2xl md:text-3xl text-[#b56576]">Klik kadonya!</p>
+          </div>
+        </div>
+
+        <div id="scratch-container" class="relative mt-4 mb-8 transform rotate-2 hover:rotate-0 transition-transform hidden w-full max-w-sm mx-auto fade-in pb-8">
+          <div class="absolute -top-3 md:-top-4 left-1/2 -translate-x-1/2 w-24 md:w-32 h-6 md:h-8 washi-tape z-20"></div>
+          <div id="voucher-content" class="vintage-card bg-[#fffdf0] p-6 md:p-8 mx-auto relative overflow-hidden">
+            <p class="font-serif text-sm md:text-base text-[#5c3a21] mb-6 md:mb-8 font-bold leading-relaxed relative z-0 text-center">
+              🎟️ VOUCHER SPESIAL 12 FEBRUARI:<br><br>
+              <span class="text-lg md:text-xl text-[#b56576]">Bebas Minta Apapun Selama 1 Hari!</span><br>
+              <span class="text-xs font-normal text-gray-500 italic mt-3 block leading-normal">(S&K: Selama masih dalam kapasitas dan kemampuanku ya, hehe).</span>
+            </p>
+            <button id="claim-btn" onclick="claimVoucher()" class="embossed-sticker w-full py-3 md:py-4 bg-gradient-to-r from-pink-100 to-rose-100 text-[#b56576] font-serif italic text-xl md:text-2xl opacity-0 pointer-events-none transition-opacity duration-500 relative z-0">
+              Klaim ke WhatsApp
+            </button>
+            <canvas id="scratch-canvas" class="absolute inset-0 z-10 w-full h-full cursor-crosshair touch-none rounded-lg"></canvas>
+          </div>
+        </div>
+      `;
+      
+      const p2El = container.querySelector('#epilogue-p2');
+      const p2Text = "Sekalian merayakan perjalanan panjang kita... Happy 3rd Anniversary juga untuk kita! Terima kasih sudah menjadikan aku sebagai tempat istirahatmu yang nyaman, dan memilih untuk terus berjalan bersamaku.";
+
+      typeWriter(p2El, p2Text, 40, () => {
+        createFireworks();
+        setTimeout(() => {
+          document.getElementById('gift-container').classList.remove('hidden');
+        }, 1000);
+      });
+    }
+
+    window.claimVoucher = function() {
+      const message = encodeURIComponent("Halo Sayang! Aku mau klaim Voucher Spesial Anniversary & Ulang Tahun nih! 🥰");
+      window.open(`https://wa.me/?text=${message}`, '_blank');
+    }
+
+    window.openGift = function() {
+      const giftContainer = document.getElementById('gift-container');
+      const scratchContainer = document.getElementById('scratch-container');
+      
+      giftContainer.classList.add('scale-out');
+      setTimeout(() => {
+        giftContainer.classList.add('hidden');
+        scratchContainer.classList.remove('hidden');
+        initScratchCard();
+      }, 500);
+    }
+
+    window.initScratchCard = function() {
+      const canvas = document.getElementById('scratch-canvas');
+      const voucher = document.getElementById('voucher-content');
+      const ctx = canvas.getContext('2d');
+      
+      // Set actual canvas resolution to match its displayed size
+      canvas.width = voucher.offsetWidth;
+      canvas.height = voucher.offsetHeight;
+      
+      // Fill with silver/gray color
+      ctx.fillStyle = '#cbd5e1'; 
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      // Add text instruction
+      ctx.fillStyle = '#475569'; 
+      ctx.font = 'bold 18px "Playfair Display", sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('Gosok layar untuk hadiah!', canvas.width / 2, canvas.height / 2);
+      
+      let isDrawing = false;
+      
+      function getCoordinates(e) {
+        const rect = canvas.getBoundingClientRect();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        return {
+          x: clientX - rect.left,
+          y: clientY - rect.top
+        };
+      }
+      
+      function scratch(e) {
+        if (!isDrawing) return;
+        e.preventDefault(); 
+        const { x, y } = getCoordinates(e);
+        
+        ctx.globalCompositeOperation = 'destination-out';
+        
+        // Add random variation for a more natural scratch feel
+        for (let i = 0; i < 3; i++) {
+          const offsetX = (Math.random() - 0.5) * 8;
+          const offsetY = (Math.random() - 0.5) * 8;
+          const radius = 10 + Math.random() * 8; // Random radius between 10 and 18
+          
+          ctx.beginPath();
+          ctx.arc(x + offsetX, y + offsetY, radius, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        
+        checkScratchProgress();
+      }
+      
+      canvas.addEventListener('mousedown', (e) => { isDrawing = true; scratch(e); });
+      canvas.addEventListener('mousemove', scratch);
+      canvas.addEventListener('mouseup', () => { isDrawing = false; });
+      canvas.addEventListener('mouseleave', () => { isDrawing = false; });
+      
+      canvas.addEventListener('touchstart', (e) => { isDrawing = true; scratch(e); }, { passive: false });
+      canvas.addEventListener('touchmove', scratch, { passive: false });
+      canvas.addEventListener('touchend', () => { isDrawing = false; });
+      canvas.addEventListener('touchcancel', () => { isDrawing = false; });
+      
+      let isRevealed = false;
+      let lastCheck = 0;
+      function checkScratchProgress() {
+        if (isRevealed) return;
+        const now = Date.now();
+        if (now - lastCheck < 150) return; // Throttle check
+        lastCheck = now;
+        
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const pixels = imageData.data;
+        let transparentPixels = 0;
+        
+        const step = 4 * 10; // Check every 10th pixel
+        for (let i = 3; i < pixels.length; i += step) {
+          if (pixels[i] === 0) transparentPixels++;
+        }
+        
+        const sampledPixels = pixels.length / step;
+        const percent = (transparentPixels / sampledPixels) * 100;
+        
+        if (percent > 40) { // If 40% is scratched, reveal the rest
+          isRevealed = true;
+          canvas.style.transition = 'opacity 0.8s ease';
+          canvas.style.opacity = '0';
+          setTimeout(() => {
+            canvas.style.display = 'none';
+            const claimBtn = document.getElementById('claim-btn');
+            if (claimBtn) claimBtn.classList.remove('opacity-0', 'pointer-events-none');
+          }, 800);
+          
+          // Remove listeners by cloning
+          if (canvas.parentNode) {
+            const newCanvas = canvas.cloneNode(true);
+            canvas.parentNode.replaceChild(newCanvas, canvas);
+          }
+        }
+      }
+    }
+
+    // Fireworks Implementation
+    function createFireworks() {
+      const canvas = document.createElement('canvas');
+      canvas.style.position = 'fixed';
+      canvas.style.top = '0';
+      canvas.style.left = '0';
+      canvas.style.width = '100vw';
+      canvas.style.height = '100vh';
+      canvas.style.pointerEvents = 'none';
+      canvas.style.zIndex = '9999';
+      document.body.appendChild(canvas);
+
+      const ctx = canvas.getContext('2d');
+      
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      window.addEventListener('resize', resize);
+      resize();
+
+      const particles = [];
+      const colors = ['#ff4b72', '#ff8b00', '#ffea00', '#00d8ff', '#00ff4b', '#d000ff'];
+
+      function createExplosion(x, y) {
+        const count = 80 + Math.random() * 40;
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        for (let i = 0; i < count; i++) {
+          const angle = Math.random() * Math.PI * 2;
+          const speed = Math.random() * 6 + 2;
+          particles.push({
+            x: x,
+            y: y,
+            vx: Math.cos(angle) * speed,
+            vy: Math.sin(angle) * speed,
+            color: Math.random() > 0.2 ? color : '#ffffff',
+            alpha: 1,
+            decay: Math.random() * 0.015 + 0.01
+          });
+        }
+      }
+
+      let launchCount = 0;
+      const maxLaunches = 10;
+      
+      function launch() {
+        if (launchCount >= maxLaunches) return;
+        createExplosion(
+          canvas.width * 0.2 + Math.random() * (canvas.width * 0.6),
+          canvas.height * 0.1 + Math.random() * (canvas.height * 0.4)
+        );
+        launchCount++;
+        setTimeout(launch, 300 + Math.random() * 400);
+      }
+      
+      launch();
+
+      function animate() {
+        ctx.globalCompositeOperation = 'destination-out';
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.globalCompositeOperation = 'lighter';
+
+        let activeParticles = false;
+        
+        for (let i = particles.length - 1; i >= 0; i--) {
+          const p = particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += 0.05; // gravity
+          p.vx *= 0.98; // friction
+          p.vy *= 0.98;
+          p.alpha -= p.decay;
+          
+          if (p.alpha <= 0) {
+            particles.splice(i, 1);
+            continue;
+          }
+          
+          activeParticles = true;
+          ctx.globalAlpha = p.alpha;
+          ctx.fillStyle = p.color;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, 2.5, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        
+        if (activeParticles || launchCount < maxLaunches) {
+          requestAnimationFrame(animate);
+        } else {
+          window.removeEventListener('resize', resize);
+          canvas.remove();
+        }
+      }
+      
+      animate();
+    }
+
+    // Easter Egg Logic
+    function triggerEasterEgg() {
+      const overlay = document.createElement('div');
+      overlay.className = 'fixed inset-0 bg-pink-500/80 backdrop-blur-sm z-[9999] flex items-center justify-center p-4 opacity-0 transition-opacity duration-500';
+      overlay.id = 'easter-egg-overlay';
+      
+      const modal = document.createElement('div');
+      modal.className = 'bg-[#fffdf0] p-6 md:p-8 rounded-2xl shadow-2xl max-w-sm text-center transform scale-90 transition-transform duration-500 hand-drawn-border relative';
+      
+      modal.innerHTML = `
+        <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-24 h-8 washi-tape z-10"></div>
+        <h3 class="font-handwriting text-4xl text-pink-600 mb-4">Sstt... Rahasia! 🤫</h3>
+        <p class="font-typewriter text-gray-700 text-base md:text-lg mb-6 leading-relaxed">
+          P.S. Aku sayang banget sama kamu, lebih dari yang bisa mesin waktu ini ceritakan. Terima kasih udah nemuin pesan tersembunyi ini! ❤️
+        </p>
+        <button onclick="closeEasterEgg()" class="hand-drawn-border px-6 py-2 bg-pink-100 hover:bg-pink-200 text-gray-800 font-handwriting text-xl md:text-2xl transition-colors">
+          Kembali
+        </button>
+      `;
+      
+      overlay.appendChild(modal);
+      document.body.appendChild(overlay);
+      
+      // Trigger reflow for animation
+      void overlay.offsetWidth;
+      overlay.classList.remove('opacity-0');
+      modal.classList.remove('scale-90');
+      modal.classList.add('scale-100');
+      
+      createFloatingHearts();
+    }
+
+    window.closeEasterEgg = function() {
+      const overlay = document.getElementById('easter-egg-overlay');
+      if (overlay) {
+        overlay.classList.add('opacity-0');
+        const modal = overlay.querySelector('div');
+        if (modal) {
+          modal.classList.remove('scale-100');
+          modal.classList.add('scale-90');
+        }
+        setTimeout(() => overlay.remove(), 500);
+      }
+    }
+
+    function createFloatingHearts() {
+      const duration = 4000;
+      const end = Date.now() + duration;
+      
+      (function frame() {
+        if (Math.random() > 0.5) { // Throttle heart creation slightly
+          const heart = document.createElement('div');
+          heart.innerHTML = ['❤️', '💖', '💕', '🥰'][Math.floor(Math.random() * 4)];
+          heart.style.position = 'fixed';
+          heart.style.left = Math.random() * 100 + 'vw';
+          heart.style.top = '100vh';
+          heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+          heart.style.zIndex = '9998';
+          heart.style.pointerEvents = 'none';
+          heart.style.transition = 'transform 4s ease-out, opacity 4s ease-out';
+          
+          document.body.appendChild(heart);
+          
+          // Trigger animation
+          setTimeout(() => {
+            const randomX = (Math.random() - 0.5) * 200; // Drift left/right
+            heart.style.transform = `translate(${randomX}px, -120vh) rotate(${Math.random() * 360}deg) scale(${Math.random() + 0.5})`;
+            heart.style.opacity = '0';
+          }, 50);
+          
+          setTimeout(() => heart.remove(), 4000);
+        }
+        
+        if (Date.now() < end) {
+          requestAnimationFrame(frame);
+        }
+      }());
+    }
+
+    // PIN Lock Logic
+    const pinInputs = document.querySelectorAll('#pin-inputs input');
+    let failCount = 0;
+    const correctPin = "120222";
+    let countdownInterval;
+
+    pinInputs.forEach((input, index) => {
+      input.addEventListener('input', (e) => {
+        if (e.target.value && index < 5) {
+          pinInputs[index + 1].focus();
+        }
+      });
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Backspace' && !e.target.value && index > 0) {
+          pinInputs[index - 1].focus();
+        } else if (e.key === 'Enter') {
+          checkPin();
+        }
+      });
+    });
+
+    function showToast(message) {
+      const toast = document.createElement('div');
+      toast.className = 'bg-white/90 backdrop-blur-sm border border-pink-200 text-pink-600 px-6 py-3 rounded-full shadow-lg font-sans text-sm md:text-base transform transition-all duration-300 translate-y-[-20px] opacity-0';
+      toast.textContent = message;
+      document.getElementById('toast-container').appendChild(toast);
+      
+      // Trigger reflow to ensure transition works
+      toast.offsetHeight;
+      
+      toast.classList.remove('translate-y-[-20px]', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-[-20px]', 'opacity-0');
+        setTimeout(() => toast.remove(), 300);
+      }, 3000);
+    }
+
+    window.checkPin = function() {
+      const enteredPin = Array.from(pinInputs).map(i => i.value).join('');
+      if (enteredPin === correctPin) {
+        unlockJournal();
+      } else {
+        failCount++;
+        const pinContainer = document.getElementById('pin-inputs');
+        pinContainer.classList.add('shake');
+        setTimeout(() => pinContainer.classList.remove('shake'), 400);
+        
+        pinInputs.forEach(i => i.value = '');
+        pinInputs[0].focus();
+
+        if (failCount === 1) showToast("Tetot! Salah wleee 😜");
+        else if (failCount === 2) showToast("Masa lupa sih? Coba lagi deh! 😛");
+        else if (failCount === 3) showToast("Masih salah! Penasaran ya? 😆");
+        else if (failCount === 4) showToast("Ayo dong, masa gitu aja nyerah! 😂");
+        else if (failCount >= 5) {
+          triggerPinEasterEgg();
+        }
+      }
+    }
+
+    window.unlockJournal = function() {
+      const lockScreen = document.getElementById('lock-screen');
+      lockScreen.style.opacity = '0';
+      setTimeout(() => {
+        lockScreen.remove();
+      }, 1000);
+    }
+
+    function triggerPinEasterEgg() {
+      document.getElementById('pin-container').classList.add('hidden');
+      const easterEggContainer = document.getElementById('easter-egg-container');
+      easterEggContainer.classList.remove('hidden');
+      easterEggContainer.classList.add('flex');
+      
+      startCountdown();
+    }
+
+    function startCountdown() {
+      const timerEl = document.getElementById('countdown-timer');
+      const btnEl = document.getElementById('auto-unlock-btn');
+      
+      const now = new Date();
+      let targetYear = now.getFullYear();
+      let targetDate = new Date(targetYear, 2, 18, 0, 0, 0); // Month is 0-indexed, 2 = March
+      if (now > targetDate) {
+        targetDate.setFullYear(targetYear + 1);
+      }
+      
+      function updateTimer() {
+        const currentTime = new Date().getTime();
+        const distance = targetDate.getTime() - currentTime;
+
+        if (distance <= 0) {
+          clearInterval(countdownInterval);
+          timerEl.classList.add('hidden');
+          btnEl.classList.remove('hidden');
+        } else {
+          const hours = Math.floor(distance / (1000 * 60 * 60));
+          const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+          
+          timerEl.textContent = `${hours} Jam : ${minutes} Menit : ${seconds} Detik`;
+        }
+      }
+
+      updateTimer();
+      countdownInterval = setInterval(updateTimer, 1000);
+    }
+
+    // Initialize
+    renderScreen();
+  </script>
+</body>
+</html>
