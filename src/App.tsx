@@ -39,7 +39,7 @@ const chapters = [
     narasi: "Tiga tahun berlalu. Banyak yang berubah, tapi kamu selalu jadi tempat favoritku.",
     question: "Dari semua hal yang kita lewati, kapan aku merasa paling bersyukur dan tersentuh olehmu?",
     choices: [
-      { text: "Saat kamu menerima aku sebagai tempat istirahatmu dengan manja.", isCorrect: true },
+      { text: "Saat aku menerima kamu sebagai tempat istirahatmu dengan manja.", isCorrect: true },
       { text: "Saat kita jalan-jalan tanpa arah.", isCorrect: false, wrongMessage: "Jalan-jalan emang seru, tapi ada momen yang lebih bikin aku tersentuh." }
     ],
     successMessage: "Tepat sekali. Walaupun aku tahu kamu juga butuh dimanja, tapi melihat kamu nyaman bersandar dan manja ke aku... itu rasanya luar biasa.",
