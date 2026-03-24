@@ -235,98 +235,25 @@
 
     .hidden { display: none !important; }
   </style>
+  <style>
+    /* Add flip animation for the card */
+    @keyframes flipCard {
+      0% { transform: rotateY(0deg) scale(1); }
+      50% { transform: rotateY(90deg) scale(1.05); }
+      100% { transform: rotateY(0deg) scale(1); }
+    }
+    .flip-anim {
+      animation: flipCard 0.6s ease-in-out;
+    }
+    .preserve-3d {
+      transform-style: preserve-3d;
+    }
+    .perspective-1000 {
+      perspective: 1000px;
+    }
+  </style>
 </head>
 <body>
-  <audio id="backsong" loop src="Ruang.mp3"></audio>
-  <!-- Lock Screen -->
-  <div id="lock-screen" class="fixed top-0 left-0 w-screen h-screen z-[9999] bg-[#d9c8b4] flex flex-col items-center justify-center p-4 transition-opacity duration-1000" style="background-image: radial-gradient(circle at center, #e6d5c3 0%, #c2b09c 100%);">
-    
-    <!-- Book Cover -->
-    <div class="relative w-full max-w-sm md:max-w-md h-[85vh] max-h-[800px] bg-[#cda776] rounded-r-2xl rounded-l-sm shadow-[15px_15px_35px_rgba(0,0,0,0.3),inset_15px_0_20px_rgba(0,0,0,0.1)] border border-[#b58f5e] flex flex-col items-center justify-center p-6 mx-auto overflow-hidden" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.8%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22 opacity=%220.15%22/%3E%3C/svg%3E');">
-      
-      <!-- Spiral Binding -->
-      <div class="absolute left-1 top-6 bottom-6 w-5 flex flex-col justify-evenly z-20">
-        <div class="w-8 h-2.5 border border-gray-500 rounded-full bg-gradient-to-b from-gray-300 via-gray-100 to-gray-400 shadow-[2px_2px_4px_rgba(0,0,0,0.4)] -ml-3"></div>
-        <div class="w-8 h-2.5 border border-gray-500 rounded-full bg-gradient-to-b from-gray-300 via-gray-100 to-gray-400 shadow-[2px_2px_4px_rgba(0,0,0,0.4)] -ml-3"></div>
-        <div class="w-8 h-2.5 border border-gray-500 rounded-full bg-gradient-to-b from-gray-300 via-gray-100 to-gray-400 shadow-[2px_2px_4px_rgba(0,0,0,0.4)] -ml-3"></div>
-        <div class="w-8 h-2.5 border border-gray-500 rounded-full bg-gradient-to-b from-gray-300 via-gray-100 to-gray-400 shadow-[2px_2px_4px_rgba(0,0,0,0.4)] -ml-3"></div>
-        <div class="w-8 h-2.5 border border-gray-500 rounded-full bg-gradient-to-b from-gray-300 via-gray-100 to-gray-400 shadow-[2px_2px_4px_rgba(0,0,0,0.4)] -ml-3"></div>
-        <div class="w-8 h-2.5 border border-gray-500 rounded-full bg-gradient-to-b from-gray-300 via-gray-100 to-gray-400 shadow-[2px_2px_4px_rgba(0,0,0,0.4)] -ml-3"></div>
-        <div class="w-8 h-2.5 border border-gray-500 rounded-full bg-gradient-to-b from-gray-300 via-gray-100 to-gray-400 shadow-[2px_2px_4px_rgba(0,0,0,0.4)] -ml-3"></div>
-        <div class="w-8 h-2.5 border border-gray-500 rounded-full bg-gradient-to-b from-gray-300 via-gray-100 to-gray-400 shadow-[2px_2px_4px_rgba(0,0,0,0.4)] -ml-3"></div>
-        <div class="w-8 h-2.5 border border-gray-500 rounded-full bg-gradient-to-b from-gray-300 via-gray-100 to-gray-400 shadow-[2px_2px_4px_rgba(0,0,0,0.4)] -ml-3"></div>
-        <div class="w-8 h-2.5 border border-gray-500 rounded-full bg-gradient-to-b from-gray-300 via-gray-100 to-gray-400 shadow-[2px_2px_4px_rgba(0,0,0,0.4)] -ml-3"></div>
-      </div>
-
-      <!-- Metal Corners -->
-      <div class="absolute top-0 right-0 w-12 h-12 bg-gradient-to-bl from-[#d4af37] to-[#8a5a19] shadow-[inset_1px_1px_2px_rgba(255,255,255,0.4)] z-10" style="clip-path: polygon(100% 0, 0 0, 100% 100%);">
-        <div class="absolute top-2 right-2 w-1.5 h-1.5 rounded-full bg-[#5c3a21] shadow-[inset_0_1px_1px_rgba(0,0,0,0.5)]"></div>
-      </div>
-      <div class="absolute bottom-0 right-0 w-12 h-12 bg-gradient-to-tl from-[#d4af37] to-[#8a5a19] shadow-[inset_1px_1px_2px_rgba(255,255,255,0.4)] z-10" style="clip-path: polygon(100% 100%, 0 100%, 100% 0);">
-        <div class="absolute bottom-2 right-2 w-1.5 h-1.5 rounded-full bg-[#5c3a21] shadow-[inset_0_1px_1px_rgba(0,0,0,0.5)]"></div>
-      </div>
-
-      <!-- Scribbles -->
-      <div class="absolute bottom-6 right-8 font-handwriting text-[#5c3a21]/60 text-xl md:text-2xl transform -rotate-6 select-none">2023 - 2026</div>
-      <div class="absolute top-8 right-12 text-pink-700/40 text-3xl transform rotate-12 select-none">❤️</div>
-      <div class="absolute top-20 left-10 w-8 h-8 doodle-star transform -rotate-12"></div>
-      <div class="absolute bottom-20 left-8 w-6 h-6 doodle-heart transform rotate-12"></div>
-
-      <div class="relative z-10 w-full flex flex-col items-center">
-        <!-- Title Label -->
-        <div class="relative bg-[#fdfbf7] border-2 border-dashed border-[#a68a61] rounded-[100px] py-6 px-8 shadow-[2px_4px_8px_rgba(0,0,0,0.15)] transform -rotate-2 mb-8 mt-4 w-11/12 max-w-[320px] flex justify-center">
-          <!-- Washi Tape -->
-          <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-24 h-7 bg-pink-200/80 rotate-3 shadow-sm" style="background-image: repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(255,255,255,0.4) 5px, rgba(255,255,255,0.4) 10px);"></div>
-          
-          <!-- Lock & String -->
-          <div class="absolute -left-4 top-1/2 -translate-y-1/2 flex items-center">
-            <div class="text-3xl md:text-4xl z-10 drop-shadow-md animate-bounce" style="animation-duration: 3s;">🔒</div>
-            <div class="w-10 h-0.5 bg-[#5c3a21] -ml-3 rotate-12 shadow-sm"></div>
-          </div>
-          
-          <h1 class="font-serif italic text-3xl md:text-4xl text-[#5c3a21] tracking-wide drop-shadow-sm text-center" style="font-family: 'Playfair Display', serif;">The Journey of Us</h1>
-        </div>
-
-        <!-- Subtitle Graph Paper -->
-        <div class="bg-[#fcfcfc] p-3 shadow-[2px_3px_6px_rgba(0,0,0,0.15)] transform rotate-2 mb-10 relative w-10/12 max-w-[280px]" style="background-image: linear-gradient(#e5e7eb 1px, transparent 1px), linear-gradient(90deg, #e5e7eb 1px, transparent 1px); background-size: 12px 12px;">
-          <p class="font-handwriting text-xl md:text-2xl text-[#374151] text-center leading-tight">Masukkan PIN rahasia untuk membuka lembaran memori...</p>
-        </div>
-        
-        <div id="pin-container" class="flex flex-col items-center fade-in w-full">
-          <!-- PIN Inputs (Wooden Tokens) -->
-          <div class="flex gap-2 md:gap-3 mb-10 justify-center" id="pin-inputs">
-            <input type="password" maxlength="1" class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-[#e6ccab] to-[#c29b6e] border border-[#8a5a19] text-[#4a2e15] text-center text-2xl font-serif shadow-[2px_4px_6px_rgba(0,0,0,0.4),inset_0_-2px_4px_rgba(255,255,255,0.3),inset_0_2px_4px_rgba(0,0,0,0.2)] focus:outline-none focus:ring-2 focus:ring-pink-400 transition-all" />
-            <input type="password" maxlength="1" class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-[#e6ccab] to-[#c29b6e] border border-[#8a5a19] text-[#4a2e15] text-center text-2xl font-serif shadow-[2px_4px_6px_rgba(0,0,0,0.4),inset_0_-2px_4px_rgba(255,255,255,0.3),inset_0_2px_4px_rgba(0,0,0,0.2)] focus:outline-none focus:ring-2 focus:ring-pink-400 transition-all" />
-            <input type="password" maxlength="1" class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-[#e6ccab] to-[#c29b6e] border border-[#8a5a19] text-[#4a2e15] text-center text-2xl font-serif shadow-[2px_4px_6px_rgba(0,0,0,0.4),inset_0_-2px_4px_rgba(255,255,255,0.3),inset_0_2px_4px_rgba(0,0,0,0.2)] focus:outline-none focus:ring-2 focus:ring-pink-400 transition-all" />
-            <input type="password" maxlength="1" class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-[#e6ccab] to-[#c29b6e] border border-[#8a5a19] text-[#4a2e15] text-center text-2xl font-serif shadow-[2px_4px_6px_rgba(0,0,0,0.4),inset_0_-2px_4px_rgba(255,255,255,0.3),inset_0_2px_4px_rgba(0,0,0,0.2)] focus:outline-none focus:ring-2 focus:ring-pink-400 transition-all" />
-            <input type="password" maxlength="1" class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-[#e6ccab] to-[#c29b6e] border border-[#8a5a19] text-[#4a2e15] text-center text-2xl font-serif shadow-[2px_4px_6px_rgba(0,0,0,0.4),inset_0_-2px_4px_rgba(255,255,255,0.3),inset_0_2px_4px_rgba(0,0,0,0.2)] focus:outline-none focus:ring-2 focus:ring-pink-400 transition-all" />
-            <input type="password" maxlength="1" class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-[#e6ccab] to-[#c29b6e] border border-[#8a5a19] text-[#4a2e15] text-center text-2xl font-serif shadow-[2px_4px_6px_rgba(0,0,0,0.4),inset_0_-2px_4px_rgba(255,255,255,0.3),inset_0_2px_4px_rgba(0,0,0,0.2)] focus:outline-none focus:ring-2 focus:ring-pink-400 transition-all" />
-          </div>
-          
-          <!-- Button (Ribbon/Sticker) -->
-          <button onclick="checkPin()" class="px-10 py-3 bg-gradient-to-r from-[#e5989b] to-[#b56576] text-[#fdfbf7] font-serif italic text-xl md:text-2xl rounded-sm shadow-[2px_4px_8px_rgba(0,0,0,0.3)] border border-dashed border-white/60 relative overflow-hidden group transition-all duration-300 hover:scale-105 hover:shadow-[2px_6px_12px_rgba(0,0,0,0.4)]">
-            <span class="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
-            Buka Kunci
-          </button>
-        </div>
-
-        <!-- Easter Egg Container -->
-        <div id="easter-egg-container" class="hidden flex-col items-center fade-in bg-[#fdfbf7] p-5 md:p-6 rounded-sm shadow-[2px_3px_8px_rgba(0,0,0,0.15)] border border-dashed border-[#c2a880] transform rotate-1 w-11/12 max-w-[340px]">
-          <p class="font-handwriting text-xl md:text-2xl text-[#4a2e15] leading-relaxed mb-5 text-center">
-            "Hahaha, gemes banget sih maksa pengen buka! Sabar ya, Dudut sayang... Mesin waktu dan kado spesialnya baru bisa dibuka tepat di hari ulang tahunmu. Tunggu sampai waktunya tiba ya, I love you! ❤️"
-          </p>
-          <div id="countdown-timer" class="font-serif text-2xl md:text-3xl font-bold text-[#b56576] mb-5 drop-shadow-sm text-center" style="font-family: 'Playfair Display', serif;"></div>
-          <button id="auto-unlock-btn" onclick="unlockJournal()" class="hidden px-8 py-3 bg-gradient-to-r from-[#e5989b] to-[#b56576] text-[#fdfbf7] font-serif italic text-xl rounded-sm shadow-[2px_4px_8px_rgba(0,0,0,0.3)] border border-dashed border-white/60 transition-all hover:scale-105 animate-bounce">
-            Waktunya Tiba! Buka Kado Sekarang 🎁
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Toast Container -->
-  <div id="toast-container" class="fixed top-10 left-1/2 -translate-x-1/2 z-[10000] flex flex-col gap-2 pointer-events-none"></div>
-
   <div class="min-h-screen flex items-center justify-center p-2 sm:p-4 md:p-8 bg-[#d9c8b4]" style="background-image: radial-gradient(circle at center, #e6d5c3 0%, #c2b09c 100%);">
     <div id="book-container" class="relative w-full max-w-2xl h-[92dvh] md:h-[85dvh] max-h-[850px] bg-[#fdfbf7] rounded-r-2xl rounded-l-sm shadow-[15px_15px_35px_rgba(0,0,0,0.3),inset_15px_0_20px_rgba(0,0,0,0.05)] border border-[#d4c5b0] overflow-hidden" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.8%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22 opacity=%220.08%22/%3E%3C/svg%3E');">
       
@@ -353,61 +280,124 @@
     </div>
   </div>
 
-  <audio id="global-audio" src="audio [vocals].mp3" loop></audio>
+  <audio id="global-audio" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" loop></audio>
+
+  <!-- Deep Talk Modal -->
+  <div id="deep-talk-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4 opacity-0 transition-opacity duration-500">
+    <div class="relative w-full max-w-md perspective-1000">
+      <!-- Card Container -->
+      <div id="deep-talk-card" class="w-full bg-[#fffdf0] rounded-lg shadow-[0_20px_50px_rgba(0,0,0,0.5)] p-8 min-h-[400px] flex flex-col items-center justify-center text-center relative transform transition-transform duration-700 preserve-3d cursor-pointer" onclick="nextDeepTalkQuestion()">
+        
+        <!-- Washi tape decoration -->
+        <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-24 h-8 washi-tape z-20"></div>
+        <div class="absolute -bottom-4 right-8 w-16 h-6 washi-tape-2 z-20 -rotate-6"></div>
+        
+        <!-- Phase Indicator -->
+        <div id="dt-phase" class="absolute top-8 left-0 right-0 text-xs font-serif tracking-widest text-gray-500 uppercase">Fase 1: Nostalgia & Tawa</div>
+        
+        <!-- Question Content -->
+        <div class="flex-1 flex items-center justify-center w-full mt-12 mb-8">
+          <p id="dt-question" class="font-handwriting text-2xl md:text-3xl text-[#374151] leading-relaxed">Klik kartu untuk mulai...</p>
+        </div>
+        
+        <!-- Counter -->
+        <div id="dt-counter" class="absolute bottom-6 left-0 right-0 text-sm font-serif text-gray-400">0 / 50</div>
+      </div>
+      
+      <!-- Close Button -->
+      <button onclick="closeDeepTalk()" class="absolute -bottom-20 left-1/2 -translate-x-1/2 text-white font-serif italic text-lg border border-white/50 rounded-full px-8 py-2 hover:bg-white/20 transition-colors">
+        Tutup
+      </button>
+    </div>
+  </div>
+
+  <!-- Truth or Dare Modal -->
+  <div id="tod-modal" class="fixed inset-0 z-[60] hidden items-center justify-center bg-black/90 backdrop-blur-md p-4 opacity-0 transition-opacity duration-500">
+    <div class="relative w-full max-w-md flex flex-col items-center">
+      
+      <!-- Title -->
+      <h2 class="font-serif italic text-3xl md:text-4xl text-[#d4af37] mb-8 text-center drop-shadow-[0_0_10px_rgba(212,175,55,0.5)]">Midnight Intimate</h2>
+      
+      <!-- Buttons Container -->
+      <div id="tod-buttons" class="flex w-full gap-4 mb-8">
+        <button onclick="playTod('truth')" class="flex-1 bg-[#2a0800] border border-[#d4af37]/50 text-[#d4af37] font-serif text-xl py-6 rounded-xl shadow-[0_0_20px_rgba(42,8,0,0.8)] hover:bg-[#3a0b00] hover:scale-105 hover:border-[#d4af37] transition-all duration-300">
+          TRUTH 🤫
+        </button>
+        <button onclick="playTod('dare')" class="flex-1 bg-[#2a0800] border border-[#d4af37]/50 text-[#d4af37] font-serif text-xl py-6 rounded-xl shadow-[0_0_20px_rgba(42,8,0,0.8)] hover:bg-[#3a0b00] hover:scale-105 hover:border-[#d4af37] transition-all duration-300">
+          DARE 🔥
+        </button>
+      </div>
+
+      <!-- Card Area -->
+      <div id="tod-card-area" class="w-full bg-[#1a0500] border border-[#d4af37]/30 rounded-lg p-8 min-h-[250px] flex flex-col items-center justify-center text-center relative hidden opacity-0 transition-opacity duration-500 shadow-[inset_0_0_30px_rgba(0,0,0,0.8)]">
+        <div class="absolute top-4 left-4 text-[#d4af37]/20 text-4xl font-serif">"</div>
+        <div class="absolute bottom-4 right-4 text-[#d4af37]/20 text-4xl font-serif">"</div>
+        <p id="tod-type-label" class="text-[#d4af37]/60 font-serif text-sm tracking-widest uppercase mb-4"></p>
+        <p id="tod-text" class="font-serif italic text-xl md:text-2xl text-[#fdfbf7] leading-relaxed"></p>
+        
+        <button onclick="resetTod()" class="mt-8 text-[#d4af37]/70 text-sm underline hover:text-[#d4af37] transition-colors">Pilih Lagi</button>
+      </div>
+
+      <!-- Close Button -->
+      <button onclick="closeTod()" class="mt-12 text-white/70 font-serif italic text-lg border border-white/30 rounded-full px-8 py-2 hover:bg-white/10 hover:text-white transition-colors">
+        Tutup Game
+      </button>
+    </div>
+  </div>
 
   <script>
     window.isPlayingAudio = false;
     
     // Data
-   const chapters = [
-  {
-    title: "Masa Putih Abu-abu (2023)",
-    narasi: "Masih ingat hari itu? Kita masih pakai seragam SMA pas kelas 12, niat awalnya ke Gramedia mau cari buku belajar buat SBMPTN. Tapi, ada satu hal yang paling aku ingat dari momen itu...",
-    question: "Menurut kamu, apa yang bikin aku saat itu mikir, 'Wah, dia nih orangnya'?",
-    choices: [
-      { text: "Pas lihat kamu bingung milih buku tebal.", isCorrect: false, wrongMessage: "Bukan itu sayang, coba ingat-ingat lagi rasanya waktu itu..." },
-      { text: "Rasanya nyaman dan tentram banget pas kita ngobrol.", isCorrect: true }
-    ],
-    successMessage: "Bener banget. Ngobrol sama kamu hari itu ngasih aku rasa nyaman yang belum pernah aku rasain sebelumnya.",
-    photoUrls: [
-      "https://i.imgur.com/8NZYSBO.jpeg",
-      "https://i.imgur.com/iolftAh.jpeg",
-      "https://i.imgur.com/69woQnA.jpeg"
-    ]
-    },
-  {
-    title: "Kenal Luar Dalam (2024)",
-    narasi: "Makin lama jalan bareng, makin kebongkar deh aslinya. Dari hal konyol kayak kamu yang selalu tahu kalau aku angkat pantat sedikit artinya mau buang angin... sampai perdebatan kecil kita.",
-    question: "Ngomong-ngomong soal perdebatan, siapa sih yang sebenarnya paling sering bertingkah, ngambek, atau marah?",
-    choices: [
-      { text: "Ya jelas aku dong!", isCorrect: false, wrongMessage: "Masa sih? Yakin bukan aku yang sering bertingkah?" },
-      { text: "Sebenernya kamu sih yang sering bertingkah, tapi kamu gengsi ngaku aja.", isCorrect: true }
-    ],
-    successMessage: "Hahaha, iya deh aku ngaku. Makasih ya udah selalu sabar ngadepin aku dan segala kelakuan absurdku selama ini.",
-    photoUrls: [
-      "https://i.imgur.com/tdmKxE4.jpeg",
-      "https://i.imgur.com/QhUJETl.jpeg",
-      "https://i.imgur.com/HNP7JcO.jpeg"
-    ]
-  },
-  {
-    title: "Tempat Pulang (2025 - 2026)",
-    narasi: "Tiga tahun berlalu. Banyak yang berubah, tapi kamu selalu jadi tempat favoritku.",
-    question: "Dari semua hal yang kita lewati, kapan aku merasa paling bersyukur dan tersentuh olehmu?",
-    choices: [
-      { text: "Saat aku menerima kamu sebagai tempat istirahatmu dengan manja.", isCorrect: true },
-      { text: "Saat kita jalan-jalan tanpa arah.", isCorrect: false, wrongMessage: "Jalan-jalan emang seru, tapi ada momen yang lebih bikin aku tersentuh." }
-    ],
-    successMessage: "Tepat sekali. Walaupun aku tahu kamu juga butuh dimanja, tapi melihat kamu nyaman bersandar dan manja ke aku... itu rasanya luar biasa.",
-    photoUrls: [
-      "https://i.imgur.com/GW3Feef.jpeg",
-      "https://i.imgur.com/stRgbmd.jpeg",
-      "https://i.imgur.com/8tt6A2f.jpeg"
-    ]
-  }
-];
+    const chapters = [
+      {
+        title: "Masa Putih Abu-abu (2023)",
+        narasi: "Masih ingat hari itu? Kita masih pakai seragam SMA kelas 12, niat awalnya ke Gramedia mau cari buku belajar buat SBMPTN. Tapi, ada satu hal yang paling aku ingat dari momen itu...",
+        question: "Menurut kamu, apa yang bikin aku saat itu mikir, 'Wah, dia nih orangnya'?",
+        choices: [
+          { text: "Pas lihat kamu bingung milih buku tebal.", isCorrect: false, wrongMessage: "Bukan itu sayang, coba ingat-ingat lagi rasanya waktu itu..." },
+          { text: "Rasanya nyaman dan tentram banget pas kita ngobrol.", isCorrect: true }
+        ],
+        successMessage: "Bener banget. Ngobrol sama kamu hari itu ngasih aku rasa nyaman yang belum pernah aku rasain sebelumnya.",
+        photoUrls: [
+          "https://picsum.photos/seed/gramedia1/400/500",
+          "https://picsum.photos/seed/gramedia2/400/500",
+          "https://picsum.photos/seed/gramedia3/400/500"
+        ]
+      },
+      {
+        title: "Kenal Luar Dalam (2024)",
+        narasi: "Makin lama jalan bareng, makin kebongkar deh aslinya. Dari hal konyol kayak kamu yang selalu tahu kalau aku angkat pantat sedikit artinya mau buang angin... sampai perdebatan kecil kita.",
+        question: "Ngomong-ngomong soal perdebatan, siapa sih yang sebenarnya paling sering bertingkah, ngambek, atau marah?",
+        choices: [
+          { text: "Ya jelas aku (Dudut) dong!", isCorrect: false, wrongMessage: "Masa sih? Yakin bukan aku yang sering bertingkah?" },
+          { text: "Sebenernya aku sih yang sering bertingkah, tapi aku gengsi ngaku aja.", isCorrect: true }
+        ],
+        successMessage: "Hahaha, iya deh aku ngaku. Makasih ya udah selalu sabar ngadepin aku dan segala kelakuan absurdku selama ini.",
+        photoUrls: [
+          "https://picsum.photos/seed/laugh1/400/500",
+          "https://picsum.photos/seed/laugh2/400/500",
+          "https://picsum.photos/seed/laugh3/400/500"
+        ]
+      },
+      {
+        title: "Tempat Pulang (2025 - 2026)",
+        narasi: "Tiga tahun berlalu. Banyak yang berubah, tapi kamu selalu jadi tempat favoritku.",
+        question: "Dari semua hal yang kita lewati, kapan aku merasa paling bersyukur dan tersentuh olehmu?",
+        choices: [
+          { text: "Saat kamu menerima aku sebagai tempat istirahatmu dengan manja.", isCorrect: true },
+          { text: "Saat kita jalan-jalan tanpa arah.", isCorrect: false, wrongMessage: "Jalan-jalan emang seru, tapi ada momen yang lebih bikin aku tersentuh." }
+        ],
+        successMessage: "Tepat sekali. Walaupun aku tahu kamu juga butuh dimanja, tapi melihat kamu nyaman bersandar dan manja ke aku... itu rasanya luar biasa.",
+        photoUrls: [
+          "https://picsum.photos/seed/hug1/400/500",
+          "https://picsum.photos/seed/hug2/400/500",
+          "https://picsum.photos/seed/hug3/400/500"
+        ]
+      }
+    ];
 
-    let currentScreen = 0;
+    let currentScreen = -1;
     const contentArea = document.getElementById('content-area');
 
     // Icons
@@ -474,7 +464,11 @@
       const screenDiv = document.createElement('div');
       screenDiv.className = 'w-full h-full flex flex-col p-6 sm:p-8 md:p-12 relative overflow-y-auto overflow-x-hidden page-enter pl-10 md:pl-14 paper-page';
       
-      if (currentScreen === 0) {
+      if (currentScreen === -1) {
+        renderCover(screenDiv);
+      } else if (currentScreen === -2) {
+        renderGameHub(screenDiv);
+      } else if (currentScreen === 0) {
         renderPrologue(screenDiv);
       } else if (currentScreen <= chapters.length) {
         renderChapter(screenDiv, chapters[currentScreen - 1], currentScreen);
@@ -492,6 +486,76 @@
         currentScreen++;
         renderScreen();
       }
+    }
+
+    window.goToCover = function() {
+      currentScreen = -1;
+      renderScreen();
+    }
+
+    window.startJournal = function() {
+      document.getElementById('global-audio').play().catch(e => console.log(e));
+      currentScreen = 0;
+      renderScreen();
+    }
+
+    window.openGameHub = function() {
+      document.getElementById('global-audio').play().catch(e => console.log(e));
+      currentScreen = -2;
+      renderScreen();
+    }
+
+    function renderCover(container) {
+      container.classList.add('items-center', 'justify-center', 'text-center');
+      
+      container.innerHTML = `
+        <div class="absolute top-4 left-8 md:top-8 md:left-12 w-16 md:w-24 h-6 md:h-8 washi-tape z-10 rotate-3"></div>
+        <div class="absolute bottom-4 right-4 md:bottom-8 md:right-8 w-16 md:w-24 h-6 md:h-8 washi-tape-2 z-10 -rotate-3"></div>
+        
+        <div class="absolute top-1/4 right-6 w-8 h-8 doodle-star transform rotate-12"></div>
+        <div class="absolute bottom-1/4 left-6 w-6 h-6 doodle-heart transform -rotate-6"></div>
+        
+        <div class="relative bg-[#fdfbf7] border-2 border-dashed border-[#a68a61] rounded-[100px] py-6 px-8 shadow-[2px_4px_8px_rgba(0,0,0,0.1)] transform -rotate-2 mb-12 mt-12 w-11/12 max-w-[360px] flex justify-center mx-auto">
+          <h1 class="font-serif italic text-5xl sm:text-6xl md:text-7xl text-[#b56576] select-none cursor-default drop-shadow-sm" style="font-family: 'Playfair Display', serif;">The Journey of Us</h1>
+        </div>
+
+        <div class="flex flex-col gap-6 w-full max-w-sm mx-auto mt-8 relative z-20">
+          <button onclick="startJournal()" class="embossed-sticker px-6 py-4 text-[#5c3a21] font-serif italic text-xl md:text-2xl flex items-center justify-center gap-2 shadow-md hover:scale-105 transition-transform w-full bg-white">
+            📖 Buka Lembaran Memori
+          </button>
+          <button onclick="openGameHub()" class="embossed-sticker px-6 py-4 bg-[#2a0800] text-[#d4af37] border border-[#d4af37]/30 font-serif italic text-xl md:text-2xl flex items-center justify-center gap-2 shadow-[0_4px_15px_rgba(42,8,0,0.5)] hover:scale-105 transition-transform w-full">
+            🍷 Buka Rahasia Malam Ini
+          </button>
+        </div>
+      `;
+    }
+
+    function renderGameHub(container) {
+      container.classList.add('items-center', 'justify-center', 'text-center');
+      
+      container.innerHTML = `
+        <div class="absolute top-4 left-8 md:top-8 md:left-12 w-16 md:w-24 h-6 md:h-8 washi-tape z-10 rotate-3"></div>
+        <div class="absolute bottom-4 right-4 md:bottom-8 md:right-8 w-16 md:w-24 h-6 md:h-8 washi-tape-2 z-10 -rotate-3"></div>
+        
+        <h2 class="font-handwriting text-5xl md:text-6xl text-[#5c3a21] mb-12 mt-8 transform -rotate-2 drop-shadow-sm">Game Hub</h2>
+
+        <div class="flex flex-col gap-6 w-full max-w-sm mx-auto relative z-20">
+          <button onclick="openDeepTalk()" class="embossed-sticker px-6 py-4 bg-white text-[#b56576] font-serif italic text-xl md:text-2xl flex items-center justify-center gap-2 shadow-md hover:scale-105 transition-transform w-full">
+            Buka Kartu Rahasia Kita 💌
+          </button>
+          <button onclick="openTod()" class="embossed-sticker px-6 py-4 bg-[#2a0800] text-[#d4af37] border border-[#d4af37]/30 font-serif italic text-xl md:text-2xl flex items-center justify-center gap-2 shadow-[0_4px_15px_rgba(42,8,0,0.5)] hover:scale-105 transition-transform w-full">
+            Truth or Dare: Midnight 🍷
+          </button>
+        </div>
+
+        <button onclick="goToCover()" class="mt-16 text-[#5c3a21] font-serif italic text-lg border border-[#5c3a21]/50 rounded-full px-8 py-2 hover:bg-[#5c3a21]/10 transition-colors relative z-20">
+          Kembali ke Sampul Utama
+        </button>
+
+        <button id="reset-btn" onclick="resetGameProgress()" class="absolute bottom-6 right-6 text-xs text-gray-400 hover:text-gray-600 underline opacity-50 hover:opacity-100 transition-opacity z-20">
+          Reset Progress Game
+        </button>
+      `;
     }
 
     function renderPrologue(container) {
@@ -745,8 +809,8 @@
       // Typewriter logic
       const p1El = container.querySelector('#epilogue-p1');
 
-      const p1Text = "Selamat bertambah usia, Sayang. Di hari yang spesial ini, aku cuma mau ngucapin terima kasih karena kamu udah jadi versi terbaik dari dirimu sendiri. Semoga di lembaran umur yang baru ini, kamu selalu dikelilingi kebahagiaan, apa yang kamu semogakan bisa tercapai, dan makin sabar ngadepin aku yang kadang suka bertingkah. Kalau sehari-hari aku sibuk ngurusin kerjaan yang ga ada abisnya, hari ini, mesin waktu dan semua jepretan memori ini eksklusif 100% VIP cuma buat kamu.";
-  
+      const p1Text = "Selamat bertambah usia, Sayang. Di hari yang spesial ini, aku cuma mau ngucapin terima kasih karena kamu udah jadi versi terbaik dari dirimu sendiri. Semoga di lembaran umur yang baru ini, kamu selalu dikelilingi kebahagiaan, apa yang kamu semogakan bisa tercapai, dan makin sabar ngadepin aku yang kadang suka bertingkah. Kalau sehari-hari aku sibuk ngurusin klien yang mau foto-foto di Popbox Studio, hari ini, mesin waktu dan semua jepretan memori ini eksklusif 100% VIP cuma buat kamu.";
+
       typeWriter(p1El, p1Text, 40, () => {
         document.getElementById('next-epilogue-btn').classList.remove('hidden');
       });
@@ -761,7 +825,7 @@
         
         <div class="mb-6 md:mb-8 mt-2 md:mt-0 text-center relative z-10">
           <h2 class="font-serif italic text-4xl sm:text-5xl md:text-6xl text-[#b56576] transform -rotate-1 drop-shadow-sm" style="font-family: 'Playfair Display', serif;">Happy Anniversary</h2>
-          <p class="font-handwriting text-xl md:text-2xl text-gray-500 mt-2">18 Maret</p>
+          <p class="font-handwriting text-xl md:text-2xl text-gray-500 mt-2">12 Februari</p>
         </div>
 
         <div class="vintage-card p-6 md:p-8 transform -rotate-1 mb-8 md:mb-10 max-w-lg mx-auto text-left space-y-4 px-4 relative">
@@ -780,7 +844,7 @@
           <div class="absolute -top-3 md:-top-4 left-1/2 -translate-x-1/2 w-24 md:w-32 h-6 md:h-8 washi-tape z-20"></div>
           <div id="voucher-content" class="vintage-card bg-[#fffdf0] p-6 md:p-8 mx-auto relative overflow-hidden">
             <p class="font-serif text-sm md:text-base text-[#5c3a21] mb-6 md:mb-8 font-bold leading-relaxed relative z-0 text-center">
-              🎟️ VOUCHER SPESIAL 18 MARET:<br><br>
+              🎟️ VOUCHER SPESIAL 12 FEBRUARI:<br><br>
               <span class="text-lg md:text-xl text-[#b56576]">Bebas Minta Apapun Selama 1 Hari!</span><br>
               <span class="text-xs font-normal text-gray-500 italic mt-3 block leading-normal">(S&K: Selama masih dalam kapasitas dan kemampuanku ya, hehe).</span>
             </p>
@@ -789,6 +853,12 @@
             </button>
             <canvas id="scratch-canvas" class="absolute inset-0 z-10 w-full h-full cursor-crosshair touch-none rounded-lg"></canvas>
           </div>
+        </div>
+
+        <div id="deep-talk-btn-container" class="mt-8 mb-12 hidden fade-in w-full flex flex-col items-center gap-4">
+          <button onclick="goToCover()" class="embossed-sticker px-6 py-3 md:px-8 md:py-4 bg-white text-[#b56576] font-serif italic text-xl md:text-2xl flex items-center justify-center gap-2 shadow-md hover:scale-105 transition-transform w-full max-w-sm">
+            Kembali ke Sampul Utama
+          </button>
         </div>
       `;
       
@@ -805,17 +875,19 @@
 
     window.claimVoucher = function() {
       const message = encodeURIComponent("Halo Sayang! Aku mau klaim Voucher Spesial Anniversary & Ulang Tahun nih! 🥰");
-      window.open(`https://wa.me/?text=${message}`, '6285155398345');
+      window.open(`https://wa.me/?text=${message}`, '_blank');
     }
 
     window.openGift = function() {
       const giftContainer = document.getElementById('gift-container');
       const scratchContainer = document.getElementById('scratch-container');
+      const deepTalkBtn = document.getElementById('deep-talk-btn-container');
       
       giftContainer.classList.add('scale-out');
       setTimeout(() => {
         giftContainer.classList.add('hidden');
         scratchContainer.classList.remove('hidden');
+        deepTalkBtn.classList.remove('hidden');
         initScratchCard();
       }, 500);
     }
@@ -1033,7 +1105,7 @@
         <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-24 h-8 washi-tape z-10"></div>
         <h3 class="font-handwriting text-4xl text-pink-600 mb-4">Sstt... Rahasia! 🤫</h3>
         <p class="font-typewriter text-gray-700 text-base md:text-lg mb-6 leading-relaxed">
-          Aku sayang banget sama kamu, lebih dari yang bisa mesin waktu ini ceritakan. Terima kasih udah nemuin pesan tersembunyi ini! ❤️
+          P.S. Aku sayang banget sama kamu, lebih dari yang bisa mesin waktu ini ceritakan. Terima kasih udah nemuin pesan tersembunyi ini! ❤️
         </p>
         <button onclick="closeEasterEgg()" class="hand-drawn-border px-6 py-2 bg-pink-100 hover:bg-pink-200 text-gray-800 font-handwriting text-xl md:text-2xl transition-colors">
           Kembali
@@ -1099,117 +1171,309 @@
       }());
     }
 
-    // PIN Lock Logic
-    const pinInputs = document.querySelectorAll('#pin-inputs input');
-    let failCount = 0;
-    const correctPin = "120222";
-    let countdownInterval;
+    // Deep Talk Logic
+    const deepTalkQuestions = [
+      // Fase 1: Nostalgia & Tawa (1-12)
+      { phase: "Fase 1: Nostalgia & Tawa", text: "Masih ingat kesan pertama kamu waktu kita awal kenal di SMA?" },
+      { phase: "Fase 1: Nostalgia & Tawa", text: "Apa momen paling konyol yang pernah kita lakuin bareng waktu awal pacaran?" },
+      { phase: "Fase 1: Nostalgia & Tawa", text: "Inget nggak waktu kita ke Gramedia? Apa hal yang paling kamu inget dari hari itu?" },
+      { phase: "Fase 1: Nostalgia & Tawa", text: "Kapan momen di mana kamu sadar kalau kamu beneran jatuh cinta sama aku?" },
+      { phase: "Fase 1: Nostalgia & Tawa", text: "Apa kebiasaan anehku yang awalnya bikin kamu kaget tapi sekarang malah bikin kangen?" },
+      { phase: "Fase 1: Nostalgia & Tawa", text: "Kalau hubungan kita ini sebuah film komedi, judul apa yang paling pas?" },
+      { phase: "Fase 1: Nostalgia & Tawa", text: "Hal paling receh apa yang pernah bikin kita ketawa sampai nangis?" },
+      { phase: "Fase 1: Nostalgia & Tawa", text: "Siapa di antara kita yang paling sering ngambek nggak jelas waktu awal jadian?" },
+      { phase: "Fase 1: Nostalgia & Tawa", text: "Apa hadiah pertama yang aku kasih ke kamu, dan gimana perasaanmu waktu itu?" },
+      { phase: "Fase 1: Nostalgia & Tawa", text: "Coba tiruin gaya bicaraku atau ekspresiku yang paling sering kamu perhatiin!" },
+      { phase: "Fase 1: Nostalgia & Tawa", text: "Apa tempat kencan pertama kita yang paling berkesan buat kamu?" },
+      { phase: "Fase 1: Nostalgia & Tawa", text: "Kalau kita bisa ngulang satu hari di masa SMA, hari apa yang mau kamu ulang?" },
 
-    pinInputs.forEach((input, index) => {
-      input.addEventListener('input', (e) => {
-        if (e.target.value && index < 5) {
-          pinInputs[index + 1].focus();
-        }
-      });
-      input.addEventListener('keydown', (e) => {
-        if (e.key === 'Backspace' && !e.target.value && index > 0) {
-          pinInputs[index - 1].focus();
-        } else if (e.key === 'Enter') {
-          checkPin();
-        }
-      });
-    });
+      // Fase 2: Apresiasi & Rasa Nyaman (13-25)
+      { phase: "Fase 2: Apresiasi & Rasa Nyaman", text: "Apa hal kecil dari aku yang selalu berhasil bikin kamu merasa dihargai?" },
+      { phase: "Fase 2: Apresiasi & Rasa Nyaman", text: "Kapan terakhir kali kamu merasa benar-benar aman dan nyaman di dekatku?" },
+      { phase: "Fase 2: Apresiasi & Rasa Nyaman", text: "Apa sifatku yang paling kamu syukuri ada di hidupmu?" },
+      { phase: "Fase 2: Apresiasi & Rasa Nyaman", text: "Kalau kamu lagi capek banget, hal apa dari aku yang bisa jadi 'tempat istirahat' buat kamu?" },
+      { phase: "Fase 2: Apresiasi & Rasa Nyaman", text: "Apa pujian dariku yang paling nempel di hati kamu sampai sekarang?" },
+      { phase: "Fase 2: Apresiasi & Rasa Nyaman", text: "Bagaimana caraku mencintaimu yang paling kamu suka?" },
+      { phase: "Fase 2: Apresiasi & Rasa Nyaman", text: "Apa hal yang mungkin jarang aku ucapkan, tapi kamu tahu aku selalu merasakannya?" },
+      { phase: "Fase 2: Apresiasi & Rasa Nyaman", text: "Kapan momen di mana kamu merasa kita ini beneran tim yang hebat?" },
+      { phase: "Fase 2: Apresiasi & Rasa Nyaman", text: "Apa hal dari dirimu yang kamu rasa cuma aku yang bisa ngerti?" },
+      { phase: "Fase 2: Apresiasi & Rasa Nyaman", text: "Sebutkan 3 hal yang paling bikin kamu bersyukur kita masih sama-sama sampai hari ini." },
+      { phase: "Fase 2: Apresiasi & Rasa Nyaman", text: "Apa bentuk 'love language' dariku yang paling bikin kamu merasa disayang?" },
+      { phase: "Fase 2: Apresiasi & Rasa Nyaman", text: "Kalau kamu harus mendeskripsikan kenyamanan hubungan kita dalam satu kata, apa itu?" },
+      { phase: "Fase 2: Apresiasi & Rasa Nyaman", text: "Apa hal yang paling kamu banggakan dari perjalanan kita selama ini?" },
 
-    function showToast(message) {
-      const toast = document.createElement('div');
-      toast.className = 'bg-white/90 backdrop-blur-sm border border-pink-200 text-pink-600 px-6 py-3 rounded-full shadow-lg font-sans text-sm md:text-base transform transition-all duration-300 translate-y-[-20px] opacity-0';
-      toast.textContent = message;
-      document.getElementById('toast-container').appendChild(toast);
+      // Fase 3: Realita & Jarak (26-38)
+      { phase: "Fase 3: Realita & Jarak", text: "Jujur, apa yang paling kamu rasain akhir-akhir ini waktu kita lagi jarang chattan?" },
+      { phase: "Fase 3: Realita & Jarak", text: "Pernah nggak kamu merasa takut kehilangan aku di tengah rasa hambar belakangan ini?" },
+      { phase: "Fase 3: Realita & Jarak", text: "Apa hal yang paling bikin kamu overthinking tentang hubungan kita akhir-akhir ini?" },
+      { phase: "Fase 3: Realita & Jarak", text: "Ada nggak perasaan terpendam yang selama ini susah banget kamu sampein ke aku?" },
+      { phase: "Fase 3: Realita & Jarak", text: "Waktu kita lagi sama-sama diam, apa yang sebenarnya ada di pikiran kamu?" },
+      { phase: "Fase 3: Realita & Jarak", text: "Apa hal dari sikapku belakangan ini yang tanpa sadar bikin kamu sedih atau kecewa?" },
+      { phase: "Fase 3: Realita & Jarak", text: "Menurutmu, apa yang bikin hubungan kita kerasa sepi akhir-akhir ini?" },
+      { phase: "Fase 3: Realita & Jarak", text: "Kalau boleh jujur, apa ekspektasi kamu yang belum bisa aku penuhi di fase ini?" },
+      { phase: "Fase 3: Realita & Jarak", text: "Pernah nggak kamu merasa berjuang sendirian? Kalau iya, kapan?" },
+      { phase: "Fase 3: Realita & Jarak", text: "Apa ketakutan terbesarmu soal masa depan hubungan kita?" },
+      { phase: "Fase 3: Realita & Jarak", text: "Bagian mana dari 'kita yang dulu' yang paling pengen kamu bawa lagi ke 'kita yang sekarang'?" },
+      { phase: "Fase 3: Realita & Jarak", text: "Apa yang kamu butuhkan dari aku saat kamu lagi merasa jauh atau capek sama keadaan?" },
+      { phase: "Fase 3: Realita & Jarak", text: "Apakah ada luka lama di hubungan ini yang sebenarnya belum benar-benar sembuh buat kamu?" },
+
+      // Fase 4: Membangun Ulang & Masa Depan (39-50)
+      { phase: "Fase 4: Membangun Ulang & Masa Depan", text: "Apa satu hal kecil yang bisa kita lakuin tiap hari biar hubungan ini kerasa hangat lagi?" },
+      { phase: "Fase 4: Membangun Ulang & Masa Depan", text: "Janji apa yang pengen kamu buat untuk dirimu sendiri demi hubungan kita?" },
+      { phase: "Fase 4: Membangun Ulang & Masa Depan", text: "Apa hal baru yang pengen banget kamu lakuin bareng aku di waktu dekat?" },
+      { phase: "Fase 4: Membangun Ulang & Masa Depan", text: "Gimana cara terbaik menurutmu buat kita nyelesaiin masalah kalau lagi sama-sama egois?" },
+      { phase: "Fase 4: Membangun Ulang & Masa Depan", text: "Kalau kita lagi berantem hebat nanti, apa satu kalimat yang harus kita inget?" },
+      { phase: "Fase 4: Membangun Ulang & Masa Depan", text: "Apa impian terbesarmu tentang kita di masa depan?" },
+      { phase: "Fase 4: Membangun Ulang & Masa Depan", text: "Bagaimana kamu melihat peran aku di masa depanmu nanti?" },
+      { phase: "Fase 4: Membangun Ulang & Masa Depan", text: "Apa satu kebiasaan buruk kita yang harus bener-bener kita tinggalin mulai sekarang?" },
+      { phase: "Fase 4: Membangun Ulang & Masa Depan", text: "Apa hal yang pengen kamu wujudkan bareng aku, yang belum pernah kita capai?" },
+      { phase: "Fase 4: Membangun Ulang & Masa Depan", text: "Menurutmu, apa kunci paling penting biar kita bisa terus bertahan ngelewatin fase bosen?" },
+      { phase: "Fase 4: Membangun Ulang & Masa Depan", text: "Kalau kamu bisa nulis satu resolusi buat hubungan kita, apa isinya?" },
+      { phase: "Fase 4: Membangun Ulang & Masa Depan", text: "Terakhir... apa pesan yang pengen kamu sampein ke aku, dari lubuk hati kamu yang paling dalam?" }
+    ];
+
+    let savedDtIndex = localStorage.getItem('dtIndex');
+    let currentQuestionIndex = savedDtIndex !== null ? parseInt(savedDtIndex) : -1;
+    let isAnimating = false;
+
+    window.openDeepTalk = function() {
+      const modal = document.getElementById('deep-talk-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
       
-      // Trigger reflow to ensure transition works
-      toast.offsetHeight;
-      
-      toast.classList.remove('translate-y-[-20px]', 'opacity-0');
-      toast.classList.add('translate-y-0', 'opacity-100');
+      const phaseEl = document.getElementById('dt-phase');
+      const questionEl = document.getElementById('dt-question');
+      const counterEl = document.getElementById('dt-counter');
 
-      setTimeout(() => {
-        toast.classList.remove('translate-y-0', 'opacity-100');
-        toast.classList.add('translate-y-[-20px]', 'opacity-0');
-        setTimeout(() => toast.remove(), 300);
-      }, 3000);
-    }
-
-    window.checkPin = function() {
-      const enteredPin = Array.from(pinInputs).map(i => i.value).join('');
-      if (enteredPin === correctPin) {
-        unlockJournal();
-        document.getElementById('backsong').play();
+      // Load state
+      if (currentQuestionIndex === -1) {
+        phaseEl.textContent = "Mulai";
+        questionEl.textContent = "Klik kartu untuk mulai...";
+        counterEl.textContent = "0 / 50";
+      } else if (currentQuestionIndex < deepTalkQuestions.length) {
+        const q = deepTalkQuestions[currentQuestionIndex];
+        phaseEl.textContent = q.phase;
+        questionEl.textContent = q.text;
+        counterEl.textContent = `${currentQuestionIndex + 1} / 50`;
       } else {
-        failCount++;
-        const pinContainer = document.getElementById('pin-inputs');
-        pinContainer.classList.add('shake');
-        setTimeout(() => pinContainer.classList.remove('shake'), 400);
-        
-        pinInputs.forEach(i => i.value = '');
-        pinInputs[0].focus();
-
-        if (failCount === 1) showToast("Tetot! Salah wleee 😜");
-        else if (failCount === 2) showToast("Masa lupa sih? Coba lagi deh! 😛");
-        else if (failCount === 3) showToast("Masih salah! Penasaran ya? 😆");
-        else if (failCount === 4) showToast("Ayo dong, masa gitu aja nyerah! 😂");
-        else if (failCount >= 5) {
-          triggerPinEasterEgg();
-        }
+        phaseEl.textContent = "Selesai";
+        questionEl.innerHTML = "Kartu habis.<br><br>Terima kasih sudah bertahan, sudah mau jujur, dan sudah mau kembali hangat bersamaku.<br><br>Aku sayang kamu, Shera. ❤️";
+        questionEl.classList.add('text-xl');
+        questionEl.classList.remove('text-2xl', 'md:text-3xl');
+        counterEl.textContent = "50 / 50";
       }
-    }
-
-    window.unlockJournal = function() {
-      const lockScreen = document.getElementById('lock-screen');
-      lockScreen.style.opacity = '0';
+      
+      // Small delay for fade in
       setTimeout(() => {
-        lockScreen.remove();
-      }, 1000);
+        modal.classList.remove('opacity-0');
+        modal.classList.add('opacity-100');
+      }, 50);
     }
 
-    function triggerPinEasterEgg() {
-      document.getElementById('pin-container').classList.add('hidden');
-      const easterEggContainer = document.getElementById('easter-egg-container');
-      easterEggContainer.classList.remove('hidden');
-      easterEggContainer.classList.add('flex');
+    window.closeDeepTalk = function() {
+      const modal = document.getElementById('deep-talk-modal');
+      modal.classList.remove('opacity-100');
+      modal.classList.add('opacity-0');
       
-      startCountdown();
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }, 500);
     }
 
-    function startCountdown() {
-      const timerEl = document.getElementById('countdown-timer');
-      const btnEl = document.getElementById('auto-unlock-btn');
+    window.nextDeepTalkQuestion = function() {
+      if (isAnimating) return;
       
-      const now = new Date();
-      let targetYear = now.getFullYear();
-      let targetDate = new Date(targetYear, 2, 18, 0, 0, 0); // Month is 0-indexed, 2 = March
-      if (now > targetDate) {
-        targetDate.setFullYear(targetYear + 1);
-      }
+      const card = document.getElementById('deep-talk-card');
+      const phaseEl = document.getElementById('dt-phase');
+      const questionEl = document.getElementById('dt-question');
+      const counterEl = document.getElementById('dt-counter');
       
-      function updateTimer() {
-        const currentTime = new Date().getTime();
-        const distance = targetDate.getTime() - currentTime;
-
-        if (distance <= 0) {
-          clearInterval(countdownInterval);
-          timerEl.classList.add('hidden');
-          btnEl.classList.remove('hidden');
+      isAnimating = true;
+      card.classList.add('flip-anim');
+      
+      // Change content halfway through the flip
+      setTimeout(() => {
+        if (currentQuestionIndex < deepTalkQuestions.length) {
+          currentQuestionIndex++;
+          localStorage.setItem('dtIndex', currentQuestionIndex);
+        }
+        
+        if (currentQuestionIndex < deepTalkQuestions.length) {
+          const q = deepTalkQuestions[currentQuestionIndex];
+          phaseEl.textContent = q.phase;
+          questionEl.textContent = q.text;
+          counterEl.textContent = `${currentQuestionIndex + 1} / 50`;
         } else {
-          const hours = Math.floor(distance / (1000 * 60 * 60));
-          const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-          
-          timerEl.textContent = `${hours} Jam : ${minutes} Menit : ${seconds} Detik`;
+          phaseEl.textContent = "Selesai";
+          questionEl.innerHTML = "Kartu habis.<br><br>Terima kasih sudah bertahan, sudah mau jujur, dan sudah mau kembali hangat bersamaku.<br><br>Aku sayang kamu, Shera. ❤️";
+          questionEl.classList.add('text-xl');
+          questionEl.classList.remove('text-2xl', 'md:text-3xl');
+          counterEl.textContent = "50 / 50";
+        }
+      }, 300); // Halfway of 0.6s animation
+      
+      // Remove animation class when done
+      setTimeout(() => {
+        card.classList.remove('flip-anim');
+        isAnimating = false;
+      }, 600);
+    }
+
+    // Truth or Dare Logic
+    const originalTruthList = [
+      "Bagian tubuhku mana yang paling bikin kamu salah fokus?",
+      "Apa sentuhan fisik dari aku yang paling bikin kamu nyaman?",
+      "Pernah nggak kamu ngebayangin hal nakal tentang kita pas lagi di tempat umum?",
+      "Apa fantasi terliarmu yang belum pernah kamu ceritain ke aku?",
+      "Kapan terakhir kali kamu merasa sangat bergairah karena aku?",
+      "Pakaian apa yang kalau aku pakai bikin kamu susah nahan diri?",
+      "Apa hal paling berani yang pengen kamu lakuin sama aku tapi masih malu?",
+      "Ceritain satu mimpi basah atau mimpi intim kamu yang ada akunya.",
+      "Kalau kita cuma punya waktu 1 jam berdua di kamar tanpa gangguan, apa yang bakal kamu lakuin?",
+      "Apa posisi atau gaya favoritmu saat kita lagi intim?",
+      "Ciuman di bagian mana yang paling bikin kamu merinding?",
+      "Hal apa dari caraku menatapmu yang bikin kamu deg-degan?",
+      "Pernah nggak kamu pura-pura tidur padahal lagi pengen disentuh?",
+      "Apa kata-kata kotor/nakal yang paling suka kamu denger dari aku?",
+      "Kalau kamu bisa ngatur satu malam romantis yang berujung intim, skenarionya bakal kayak gimana?",
+      "Apa hal kecil yang sering aku lakuin tanpa sadar tapi bikin kamu terangsang?",
+      "Seberapa sering kamu mikirin hal intim tentang kita dalam sehari?",
+      "Pernah nggak kamu cemburu ngebayangin aku disentuh orang lain?",
+      "Apa hal baru di ranjang yang pengen banget kamu cobain bareng aku?",
+      "Gimana caramu ngasih kode kalau kamu lagi 'pengen'?",
+      "Apa memori intim kita yang paling nggak bisa kamu lupain?",
+      "Kalau aku nurutin semua maumu malam ini, apa permintaan pertamamu?",
+      "Pernah nggak kamu nahan hasrat pas kita lagi jalan bareng? Ceritain momennya.",
+      "Apa bagian tubuhmu yang paling suka aku sentuh/cium?",
+      "Jujur, seberapa puas kamu sama kehidupan intim kita selama ini?"
+    ];
+
+    const originalDareList = [
+      "Tatap mataku tanpa bicara selama 1 menit penuh, akhiri dengan ciuman lembut.",
+      "Pijat area leher dan pundakku selama 2 menit.",
+      "Cium leherku perlahan dari bawah telinga sampai ke tulang selangka.",
+      "Buka satu kancing bajuku (atau bajumu sendiri) sambil menatap mataku.",
+      "Bisikkan hal paling nakal yang pengen kamu lakuin ke aku malam ini di telingaku.",
+      "Pangku aku (atau minta aku mangku kamu) selama 3 menit ke depan.",
+      "Cium bibirku dengan penuh gairah selama minimal 10 detik.",
+      "Gigit pelan telingaku lalu hembuskan napas di sana.",
+      "Pegang tanganku, cium setiap ujung jariku satu per satu.",
+      "Tutup matamu, biarkan aku menyentuh satu bagian wajah/lehermu, lalu tebak bagian mana itu.",
+      "Cium area sensitifku yang bukan bibir atau leher.",
+      "Usap rambutku dan tatap mataku sambil bilang betapa kamu menginginkanku.",
+      "Biarkan aku mencium lehermu selama 30 detik tanpa kamu boleh membalas.",
+      "Tarik pinggangku mendekat dan peluk aku erat selama 1 menit.",
+      "Cium rahangku dari ujung ke ujung.",
+      "Beri aku 'cupang' (hickey) bayangan (hanya ciuman keras tanpa bekas) di tempat tersembunyi.",
+      "Goda aku dengan sentuhan ringan di paha bagian dalam selama 15 detik.",
+      "Genggam tanganku dan letakkan di bagian tubuhmu yang paling ingin aku sentuh sekarang.",
+      "Cium aku di bibir, tapi hanya gunakan bibir bawahmu.",
+      "Duduk di pangkuanku menghadapku, dan kalungkan tanganmu di leherku sampai giliran berikutnya.",
+      "Lepaskan satu barang yang sedang kamu pakai (aksesoris, kaus kaki, dll).",
+      "Beri aku pijatan sensual di tangan dan lengan selama 2 menit.",
+      "Cium dadaku (di luar baju) tepat di atas jantungku.",
+      "Tatap bibirku dengan intens selama 10 detik, lalu gigit bibir bawahmu sendiri.",
+      "Beri aku ciuman 'selamat malam' yang paling menggoda yang kamu bisa."
+    ];
+
+    let truthList = JSON.parse(localStorage.getItem('todTruth')) || [...originalTruthList];
+    let dareList = JSON.parse(localStorage.getItem('todDare')) || [...originalDareList];
+
+    window.openTod = function() {
+      const modal = document.getElementById('tod-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      
+      // Reset state
+      document.getElementById('tod-buttons').classList.remove('hidden');
+      document.getElementById('tod-card-area').classList.add('hidden');
+      document.getElementById('tod-card-area').classList.remove('opacity-100');
+      document.getElementById('tod-card-area').classList.add('opacity-0');
+      
+      setTimeout(() => {
+        modal.classList.remove('opacity-0');
+        modal.classList.add('opacity-100');
+      }, 50);
+    }
+
+    window.closeTod = function() {
+      const modal = document.getElementById('tod-modal');
+      modal.classList.remove('opacity-100');
+      modal.classList.add('opacity-0');
+      
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }, 500);
+    }
+
+    window.playTod = function(type) {
+      const buttonsArea = document.getElementById('tod-buttons');
+      const cardArea = document.getElementById('tod-card-area');
+      const typeLabel = document.getElementById('tod-type-label');
+      const textEl = document.getElementById('tod-text');
+      
+      let list = type === 'truth' ? truthList : dareList;
+      let label = type === 'truth' ? 'TRUTH' : 'DARE';
+      
+      if (list.length === 0) {
+        textEl.textContent = `Semua kartu ${label} sudah habis dimainkan. Waktunya eksekusi? 😉`;
+      } else {
+        const randomIndex = Math.floor(Math.random() * list.length);
+        const selectedText = list[randomIndex];
+        textEl.textContent = selectedText;
+        
+        // Remove the played item and save to localStorage
+        list.splice(randomIndex, 1);
+        if (type === 'truth') {
+          localStorage.setItem('todTruth', JSON.stringify(truthList));
+        } else {
+          localStorage.setItem('todDare', JSON.stringify(dareList));
         }
       }
+      
+      typeLabel.textContent = label;
+      
+      // Hide buttons, show card
+      buttonsArea.classList.add('hidden');
+      cardArea.classList.remove('hidden');
+      
+      setTimeout(() => {
+        cardArea.classList.remove('opacity-0');
+        cardArea.classList.add('opacity-100');
+      }, 50);
+    }
 
-      updateTimer();
-      countdownInterval = setInterval(updateTimer, 1000);
+    window.resetTod = function() {
+      const buttonsArea = document.getElementById('tod-buttons');
+      const cardArea = document.getElementById('tod-card-area');
+      
+      cardArea.classList.remove('opacity-100');
+      cardArea.classList.add('opacity-0');
+      
+      setTimeout(() => {
+        cardArea.classList.add('hidden');
+        buttonsArea.classList.remove('hidden');
+      }, 500);
+    }
+
+    window.resetGameProgress = function() {
+      localStorage.removeItem('dtIndex');
+      localStorage.removeItem('todTruth');
+      localStorage.removeItem('todDare');
+      
+      currentQuestionIndex = -1;
+      truthList = [...originalTruthList];
+      dareList = [...originalDareList];
+      
+      const btn = document.getElementById('reset-btn');
+      if (btn) {
+        btn.textContent = "Berhasil Direset!";
+        setTimeout(() => {
+          btn.textContent = "Reset Progress Game";
+        }, 2000);
+      }
     }
 
     // Initialize
